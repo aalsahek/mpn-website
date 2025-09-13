@@ -23,6 +23,43 @@ const speakers = [
   { id: 's3', name: 'Fatima Rahman', title: 'Policy Analyst', image: 'images/avatar-placeholder.jpg', url: '#' }
 ];
 
+// Event-specific speakers (used on events.html)
+const eventSpeakers = {
+  'career-networking-night': [
+    { name: 'Aisha Khan', role: 'Product Leader', image: 'images/avatar-placeholder.jpg' },
+    { name: 'Omar Lehtinen', role: 'Founder', image: 'images/avatar-placeholder.jpg' },
+    { name: 'Fatima Rahman', role: 'Policy Analyst', image: 'images/avatar-placeholder.jpg' },
+  ],
+  'leadership-workshop': [
+    { name: 'Aisha Khan', role: 'Product Leader', image: 'images/avatar-placeholder.jpg' },
+    { name: 'Zaki Azedani', role: 'Marketing Executive', image: 'images/avatar-placeholder.jpg' },
+  ],
+  'tech-mentoring-circle': [
+    { name: 'Omar Lehtinen', role: 'Senior Engineer', image: 'images/avatar-placeholder.jpg' },
+    { name: 'Mustafa Aal-sahek', role: 'IT Specialist', image: 'images/avatar-placeholder.jpg' },
+  ],
+  'healthcare-careers-panel': [
+    { name: 'Mehwish Ahmed', role: 'Energy Specialist', image: 'images/avatar-placeholder.jpg' },
+    { name: 'Fatima Rahman', role: 'Public Health Policy', image: 'images/avatar-placeholder.jpg' },
+  ],
+  'entrepreneurship-meetup': [
+    { name: 'Omar Lehtinen', role: 'Founder', image: 'images/avatar-placeholder.jpg' },
+    { name: 'Aisha Khan', role: 'Product Leader', image: 'images/avatar-placeholder.jpg' },
+  ],
+  'design-roundtable': [
+    { name: 'Maab', role: 'Digital Designer', image: 'images/avatar-placeholder.jpg' },
+    { name: 'Saara Taha', role: 'Host & Designer', image: 'images/avatar-placeholder.jpg' },
+  ],
+  'community-iftar': [
+    { name: 'Zaki Azedani', role: 'Host', image: 'images/avatar-placeholder.jpg' },
+    { name: 'Mehwish Ahmed', role: 'Organizer', image: 'images/avatar-placeholder.jpg' },
+  ],
+  'graduate-mixer': [
+    { name: 'Fatima Rahman', role: 'Policy Analyst', image: 'images/avatar-placeholder.jpg' },
+    { name: 'Mustafa Aal-sahek', role: 'Career Coach', image: 'images/avatar-placeholder.jpg' },
+  ],
+};
+
 const feedback = [
   'Great energy and welcoming community. Felt seen and supported.',
   'Actionable advice I used the next day — thank you!',
@@ -335,6 +372,7 @@ function renderFeedback() {
 // Render Speakers
 function renderSpeakers() {
   const wrap = $('#speakers-grid');
+  if (!wrap) return;
   wrap.innerHTML = '';
   speakers.forEach(s => {
     const a = document.createElement('a');
@@ -347,6 +385,42 @@ function renderSpeakers() {
       </div>`;
     a.addEventListener('click', () => trackEvent('speaker_card_click', { id: s.id, name: s.name }));
     wrap.appendChild(a);
+  });
+}
+
+// Inject speakers blocks on events page based on data attributes
+function renderEventSpeakers() {
+  const sections = $$('section.event[data-event]');
+  if (!sections.length) return;
+  sections.forEach(sec => {
+    const key = sec.getAttribute('data-event');
+    const list = eventSpeakers[key];
+    if (!list || !list.length) return;
+    const intro = $('.event__intro', sec);
+    if (!intro || intro.querySelector('.story__speakers')) return; // prevent duplication
+    const titleEl = $('.section__title', intro);
+    const wrap = document.createElement('div');
+    wrap.className = 'story__speakers';
+    wrap.setAttribute('aria-label', `Speakers for ${titleEl ? titleEl.textContent : 'this event'}`);
+    const h = document.createElement('h3');
+    h.className = 'story__speakers-title';
+    h.textContent = 'Speakers';
+    const grid = document.createElement('div');
+    grid.className = 'story-speakers__grid';
+    list.forEach(s => {
+      const item = document.createElement('div');
+      item.className = 'story-speaker';
+      const imgSrc = s.image || 'images/avatar-placeholder.jpg';
+      const alt = s.alt || `${s.name}${s.role ? ', ' + s.role : ''}`;
+      item.innerHTML = `
+        <img class="story-speaker__img" src="${imgSrc}" alt="${alt}" loading="lazy" />
+        <div class="story-speaker__name">${s.name}</div>
+        <div class="story-speaker__role">${s.role || ''}</div>`;
+      grid.appendChild(item);
+    });
+    wrap.appendChild(h);
+    wrap.appendChild(grid);
+    intro.appendChild(wrap);
   });
 }
 
@@ -458,6 +532,7 @@ document.addEventListener('DOMContentLoaded', () => {
   renderEvents();
   renderFeedback();
   renderSpeakers();
+  renderEventSpeakers();
   // ticker removed
   lazyLoadBackgrounds();
   initTeamScroll();

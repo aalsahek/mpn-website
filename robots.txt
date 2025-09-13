@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Update domain if deploying under a different host
+Sitemap: https://mpn.fi/sitemap.xml
