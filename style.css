@@ -364,10 +364,11 @@ section { padding: 64px 0; }
 .contact-page .contact-form-wrapper { background-color: #c0d4e4; border-radius: 0 var(--radius) var(--radius) 0; }
 .contact-page .contact-links h2 { font-family: 'Arimo', Inter, system-ui, sans-serif; color: #fff; font-size: clamp(30px, 6vw, 60px); letter-spacing: 2px; text-align: center; transform: scale(.95, 1); margin:0; }
 .contact-page .links { display:flex; flex-wrap:wrap; justify-content:center; padding-top: 50px; }
+.contact-page .contact-lead { color: #eaf2fb; text-align: center; margin: 12px 0 0; font-size: 14px; line-height: 1.5; }
 .contact-page .link { margin: 10px; cursor: pointer; }
-.contact-page .link img { width:45px; height:45px; filter: hue-rotate(220deg) drop-shadow(2px 4px 4px #0006); transition: .2s; user-select: none; }
-.contact-page .link img:hover { transform: scale(1.1); }
-.contact-page .link img:active { transform: scale(1.1); filter: hue-rotate(220deg) drop-shadow(2px 4px 4px #222) sepia(.3); }
+.contact-page .link img, .contact-page .link svg { width:45px; height:45px; filter: hue-rotate(220deg) drop-shadow(2px 4px 4px #0006); transition: .2s; user-select: none; }
+.contact-page .link img:hover, .contact-page .link svg:hover { transform: scale(1.1); }
+.contact-page .link img:active, .contact-page .link svg:active { transform: scale(1.1); filter: hue-rotate(220deg) drop-shadow(2px 4px 4px #222) sepia(.3); }
 .contact-page .form-item { position: relative; }
 .contact-page .contact-form-wrapper label,
 .contact-page .contact-form-wrapper input,
