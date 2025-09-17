@@ -79,8 +79,8 @@
         <img src="images/w13.jpg" alt="" aria-hidden="true" class="hero-shape" />
         <div class="container hero__inner">
           <div class="hero__content">
-            <h1 class="hero__title hero__title--stack"><span>Contact</span><span>Us</span></h1>
-            <p class="hero__sub">Questions, partnerships, volunteering, or media? We’d love to hear from you.</p>
+            <h1 class="hero__title hero__title--stack" data-i18n="contact.headline_markup"><span>Get</span><span>in Touch</span></h1>
+            <p class="hero__sub" data-i18n="contact.heroSub">Questions, partnerships, volunteering, or media? We’d love to hear from you.</p>
           </div>
         </div>
       </section>
@@ -88,8 +88,8 @@
       <section id="contact" aria-label="Contact Us">
         <div class="contact-box">
           <div class="contact-links">
-            <h2>CONTACT</h2>
-            <p class="contact-lead">Join our community online and follow us on social media for news, event updates, and inspiring stories.</p>
+            <h2 data-i18n="contact.headline">Get in Touch</h2>
+            <p class="contact-lead" data-i18n="contact.intro">We would love to hear from you. Whether you want to volunteer, explore sponsorship opportunities, build partnerships, or invite us to speak at your event, please reach out using the form below.</p>
             <div class="links">
               <div class="link">
                 <a href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn">
@@ -112,28 +112,28 @@
             <form action="mailto:hello@mpn.fi" method="post" enctype="text/plain">
               <div class="form-item">
                 <input id="sender" type="text" name="sender" required />
-                <label for="sender">Name:</label>
+                <label for="sender" data-i18n="contact.lbl.name">Name:</label>
               </div>
               <div class="form-item">
                 <input id="email" type="email" name="email" required />
-                <label for="email">Email:</label>
+                <label for="email" data-i18n="contact.lbl.email">Email:</label>
               </div>
               <div class="form-item">
                 <select id="support" name="support" required>
                   <option value="" selected disabled hidden></option>
-                  <option value="select" disabled>Select an option</option>
+                  <option value="select" disabled data-i18n="contact.ph.support">Select an option</option>
                   <option value="volunteering">Volunteering</option>
                   <option value="partnership">Partnership</option>
                   <option value="speaker">Speaker</option>
                   <option value="sponsorship">Sponsorship</option>
                 </select>
-                <label for="support">How can you support us?</label>
+                <label for="support" data-i18n="contact.lbl.support">How can you support us?</label>
               </div>
               <div class="form-item">
                 <textarea id="message" name="message" rows="6" required></textarea>
-                <label for="message">Message:</label>
+                <label for="message" data-i18n="contact.lbl.message">Message:</label>
               </div>
-              <button class="btn btn--primary submit-btn" type="submit">Send</button>
+              <button class="btn btn--primary submit-btn" type="submit" data-i18n="contact.send">Send</button>
             </form>
           </div>
         </div>

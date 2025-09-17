@@ -100,6 +100,19 @@ const translations = {
     'speakers.showMore': 'Näytä lisää',
     'contact.title': 'Yhteystiedot',
     'contact.text': 'Ota yhteyttä some-kanavissa tai lähetä sähköpostia osoitteeseen <a href="mailto:hello@mpn.fi">hello@mpn.fi</a>.',
+    'contact.headline': 'Ota Yhteyttä',
+    'contact.headline_markup': '<span>Ota</span><span>Yhteyttä</span>',
+    'contact.intro': 'Haluamme kuulla sinusta. Haluammepa tehdä vapaaehtoistyötä, tutkia sponsorointimahdollisuuksia, rakentaa kumppanuuksia tai kutsua meidät puhumaan tapahtumaasi, ota yhteyttä seuraavalla tavalla. Jos haluat mieluummin käyttää muita viestintätapoja, pysy kuulolla. Löydät meidät alla olevista sosiaalisen median alustoista.',
+    'contact.heroSub': 'Kysymyksiä, kumppanuuksia, vapaaehtoistyötä tai mediaa? Kuulemme sinusta mielellämme.',
+    'contact.send': 'Lähetä',
+    'contact.ph.name': 'Nimi',
+    'contact.ph.email': 'sina@esimerkki.fi',
+    'contact.ph.message': 'Kirjoita viestisi…',
+    'contact.ph.support': 'Valitse vaihtoehto',
+    'contact.lbl.name': 'Nimi:',
+    'contact.lbl.email': 'Sähköposti:',
+    'contact.lbl.message': 'Viesti:',
+    'contact.lbl.support': 'Miten voit tukea meitä?',
   },
   en: {
     'hero.title': 'Empowering Muslim professionals in Finland.',
@@ -127,6 +140,19 @@ const translations = {
     'speakers.showMore': 'Show more',
     'contact.title': 'Contact',
     'contact.text': 'Reach us via social channels or send an email to <a href="mailto:hello@mpn.fi">hello@mpn.fi</a>.',
+    'contact.headline': 'Get in Touch',
+    'contact.headline_markup': '<span>Get</span><span>in Touch</span>',
+    'contact.intro': 'We would love to hear from you. Whether you want to volunteer, explore sponsorship opportunities, build partnerships, or invite us to speak at your event, please reach out using the next form of if you prefer other means of communication and stay tuned, you can find us on the social media platforms below',
+    'contact.heroSub': 'Questions, partnerships, volunteering, or media? We’d love to hear from you.',
+    'contact.send': 'Send',
+    'contact.ph.name': 'Your name',
+    'contact.ph.email': 'you@example.com',
+    'contact.ph.message': 'Write your message...',
+    'contact.ph.support': 'Select an option',
+    'contact.lbl.name': 'Name:',
+    'contact.lbl.email': 'Email:',
+    'contact.lbl.message': 'Message:',
+    'contact.lbl.support': 'How can you support us?',
   }
 };
 
@@ -433,6 +459,11 @@ function setLanguage(lang) {
       if (el.tagName === 'A' || el.tagName === 'BUTTON') el.innerHTML = map[k];
       else el.innerHTML = map[k];
     }
+  });
+  // Placeholder translations
+  $$('[data-i18n-placeholder]').forEach(el => {
+    const k = el.getAttribute('data-i18n-placeholder');
+    if (map[k]) el.setAttribute('placeholder', map[k]);
   });
   document.documentElement.lang = lang;
   const tgl = document.getElementById('lang-tgl');
