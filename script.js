@@ -131,7 +131,7 @@ const translations = {
     'vision.text': 'A thriving network where Muslim professionals in Finland connect, elevate one another, and contribute to a just, prosperous society.',
     'mission.title': 'Our Mission',
     'mission.text': 'Create opportunities for learning, mentorship, and collaboration; celebrate role models; and build bridges across communities and industries.',
-    'events.title': 'Events',
+    'events.title': 'Our Services',
     'events.sub': 'Featured and upcoming gatherings, workshops, and talks.',
     'feedback.title': 'Feedback we’ve received',
     'feedback.sub': 'Anonymous notes from attendees and members.',
