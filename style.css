@@ -287,6 +287,7 @@ section { padding: 64px 0; }
 /* Left panel — Vision background gradient */
 .vision-section {
   background: linear-gradient(to right, #0f476a 0%, #1c698c 100%);
+  color: #E8EBEF;
 }
 
 /* Right panel — solid light grey, diagonal on the left */
