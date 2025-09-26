@@ -81,6 +81,7 @@ const translations = {
     
     'principles.title': 'Periaatteemme',
     'principles.sub': 'Kolme peruspilaria ohjaa toimintaamme.',
+    'principles.headline': 'Kokemuksemme ydin',
     'principles.learning.title': 'Oppiminen',
     'principles.learning.text': 'Työpajat, uratarinat ja avoimet resurssit jatkuvaan kasvuun.',
     'principles.networking.title': 'Verkostoituminen',
@@ -121,6 +122,7 @@ const translations = {
     
     'principles.title': 'Our principles',
     'principles.sub': 'Three pillars guide everything we do.',
+    'principles.headline': 'The Core of Our Experience',
     'principles.learning.title': 'Learning',
     'principles.learning.text': 'Workshops, career stories, and open resources for continuous growth.',
     'principles.networking.title': 'Networking',
@@ -169,23 +171,25 @@ const $$ = (sel, root=document) => Array.from(root.querySelectorAll(sel));
 
 // Render Principles
 function renderPrinciples(lang='en') {
-        const wrap = $('#principles-grid');
-        if (!wrap) return;
-        wrap.innerHTML = '';
-  principlesData.forEach(p => {
-    const titleKey = `principles.${p.key}.title`;
-    const textKey = `principles.${p.key}.text`;
-    const card = document.createElement('article');
-    card.className = 'card principle';
-    card.innerHTML = `
-      <div class="principle__icon" aria-hidden="true">${p.icon}</div>
-      <h3 class="card__title" data-i18n="${titleKey}">${translations[lang][titleKey]}</h3>
-      <p class="card__text" data-i18n="${textKey}">${translations[lang][textKey]}</p>
-      <a href="#impact" class="card__cta" data-track="principle_learn_more_click" aria-label="Learn more about ${translations[lang][titleKey]}">
-        <span>Learn more</span>
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>`;
-    wrap.appendChild(card);
+  const wraps = $$('.principles-grid');
+  if (!wraps.length) return;
+  wraps.forEach(wrap => {
+    wrap.innerHTML = '';
+    principlesData.forEach(p => {
+      const titleKey = `principles.${p.key}.title`;
+      const textKey = `principles.${p.key}.text`;
+      const card = document.createElement('article');
+      card.className = 'card principle';
+      card.innerHTML = `
+        <div class="principle__icon" aria-hidden="true">${p.icon}</div>
+        <h3 class="card__title" data-i18n="${titleKey}">${translations[lang][titleKey]}</h3>
+        <p class="card__text" data-i18n="${textKey}">${translations[lang][textKey]}</p>
+        <a href="#impact" class="card__cta" data-track="principle_learn_more_click" aria-label="Learn more about ${translations[lang][titleKey]}">
+          <span>Learn more</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>`;
+      wrap.appendChild(card);
+    });
   });
 }
 

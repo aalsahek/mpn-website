@@ -108,23 +108,59 @@
         </div>
       </section>
 
-      <section class="vm" aria-label="Vision and Mission">
+      <section class="vm-card-section" aria-label="Vision and Mission">
         <div class="container">
-          <div class="vm__block">
-            <h2 class="vm__title">Our Vision</h2>
-            <p class="vm__text">A thriving network where Muslim professionals in Finland connect, elevate one another, and contribute to a just, prosperous society.</p>
-          </div>
-          <div class="vm__block">
-            <h2 class="vm__title">Our Mission</h2>
-            <p class="vm__text">Create opportunities for learning, mentorship, and collaboration; celebrate role models; and build bridges across communities and industries.</p>
+          <div class="vm-card-stack">
+            <article class="principle-card vm-card" style="--grad: #0f476a, #1f74a3; --accent: #0f476a;">
+              <div class="title" data-i18n="vision.title">Our Vision</div>
+              <div class="content">
+                <p data-i18n="vision.text">A thriving network where Muslim professionals in Finland connect, elevate one another, and contribute to a just, prosperous society.</p>
+              </div>
+            </article>
+            <article class="principle-card vm-card" style="--grad: #10375c, #1c698c; --accent: #10375c;">
+              <div class="title" data-i18n="mission.title">Our Mission</div>
+              <div class="content">
+                <p data-i18n="mission.text">Create opportunities for learning, mentorship, and collaboration; celebrate role models; and build bridges across communities and industries.</p>
+              </div>
+            </article>
           </div>
         </div>
       </section>
 
-      <section class="container" aria-label="Our Principles" style="padding: 40px 0 80px;">
-        <h2 class="section__title">Our Principles</h2>
-        <p class="section__sub">Learning, Networking, Empowering.</p>
-        <div class="principles__grid" id="principles-grid"></div>
+      <section class="principles" aria-label="Our Principles">
+        <div class="container">
+          <h2 class="section__title" data-i18n="principles.title">Our principles</h2>
+          <p class="section__sub" data-i18n="principles.sub">Three pillars guide everything we do.</p>
+          <div class="principle-grid">
+            <article class="principle-card" style="--grad: #143474, #1c698c; --accent: #143474;">
+              <div class="title" data-i18n="principles.learning.title">Learning</div>
+              <div class="icon" aria-hidden="true">
+                <img src="images/Learning-icon.png" alt="" loading="lazy">
+              </div>
+              <div class="content">
+                <p data-i18n="principles.learning.text">Workshops, career stories, and open resources for continuous growth.</p>
+              </div>
+            </article>
+            <article class="principle-card" style="--grad: #10375c, #1c698c; --accent: #10375c;">
+              <div class="title" data-i18n="principles.networking.title">Networking</div>
+              <div class="icon" aria-hidden="true">
+                <img src="images/Networking-icon.png" alt="" loading="lazy">
+              </div>
+              <div class="content">
+                <p data-i18n="principles.networking.text">Spaces to meet, share, and build collaborations.</p>
+              </div>
+            </article>
+            <article class="principle-card" style="--grad: #0f476a, #1f74a3; --accent: #0f476a;">
+              <div class="title" data-i18n="principles.empowering.title">Empowering</div>
+              <div class="icon" aria-hidden="true">
+                <img src="images/Empowering-icon.png" alt="" loading="lazy">
+              </div>
+              <div class="content">
+                <p data-i18n="principles.empowering.text">We elevate role models and support one another.</p>
+              </div>
+            </article>
+          </div>
+        </div>
       </section>
 
       <!-- Our Team -->
