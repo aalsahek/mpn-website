@@ -399,6 +399,96 @@ function renderFeedback() {
   }
 }
 
+function initStatisticsCounters() {
+  const counters = Array.from(document.querySelectorAll('.statistics-card h3[data-count]'));
+  if (!counters.length) return;
+
+  const progressCircle = document.querySelector('.progress-circle__value');
+  const progressLabel = document.querySelector('.progress-circle__percent');
+  const progressTarget = 93;
+  const circumference = 427;
+  const targetOffset = circumference * (1 - progressTarget / 100);
+
+  if (progressCircle) {
+    progressCircle.style.strokeDashoffset = `${circumference}`;
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.intersectionRatio >= 0.5) {
+        if (entry.target === progressLabel) {
+          const delay = counters.length * 200;
+          setTimeout(() => startCounter(progressLabel), delay);
+          observer.unobserve(entry.target);
+          return;
+        }
+        const index = counters.indexOf(entry.target);
+        const delay = index * 200;
+        setTimeout(() => startCounter(entry.target), delay);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  counters.forEach((el) => observer.observe(el));
+  if (progressLabel) observer.observe(progressLabel);
+
+  function startCounter(el) {
+    if (el.classList.contains('progress-circle__percent')) {
+      return animateProgress();
+    }
+
+    const target = parseInt(el.getAttribute('data-count'), 10) || 0;
+    const suffix = el.getAttribute('data-suffix') || '';
+    const totalFrames = 120;
+    let frame = 0;
+
+    function easeOut(t, b, c, d) {
+      return c * ((t = t / d - 1) * t * t + 1) + b;
+    }
+
+    function update() {
+      if (frame >= totalFrames) {
+        el.textContent = `${target}${suffix}`;
+        return;
+      }
+      frame += 1;
+      const value = Math.floor(easeOut(frame, 0, target, totalFrames));
+      el.textContent = `${value}${suffix}`;
+      requestAnimationFrame(update);
+    }
+
+    update();
+  }
+
+  function animateProgress() {
+    if (!progressCircle || !progressLabel) return;
+    progressCircle.style.strokeDashoffset = `${circumference}`;
+    let frame = 0;
+    const frames = 120;
+
+    function easeOut(t, b, c, d) {
+      return c * ((t = t / d - 1) * t * t + 1) + b;
+    }
+
+    function update() {
+      if (frame >= frames) {
+        progressLabel.textContent = `${progressTarget}%`;
+        progressCircle.style.strokeDashoffset = `${targetOffset}`;
+        return;
+      }
+      frame += 1;
+      const val = easeOut(frame, 0, progressTarget, frames);
+      const offset = easeOut(frame, circumference, targetOffset - circumference, frames);
+      progressLabel.textContent = `${Math.round(val)}%`;
+      progressCircle.style.strokeDashoffset = `${offset}`;
+      requestAnimationFrame(update);
+    }
+
+    update();
+  }
+}
+
 // Render Speakers
 function renderSpeakers() {
   const wrap = $('#speakers-grid');
@@ -571,6 +661,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // ticker removed
   lazyLoadBackgrounds();
   initTeamScroll();
+  initStatisticsCounters();
 
   // Language toggle
         const langBtn = document.getElementById('lang-tgl') || $('.lang-toggle');
