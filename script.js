@@ -597,6 +597,7 @@ function setupHeader() {
 function setupDrawer() {
   const drawer = $('#mobile-drawer');
   const toggles = $$('.menu-toggle');
+  if (!drawer || !toggles.length) return;
   function setOpen(open) {
     drawer.classList.toggle('open', open);
     drawer.setAttribute('aria-hidden', String(!open));
@@ -648,6 +649,194 @@ function lazyLoadBackgrounds() {
   els.forEach(el => io.observe(el));
 }
 
+
+function initBurgerMenu() {
+  const body = document.body;
+  const burgerContainer = document.querySelector('.b-container');
+  const burgerMenu = burgerContainer ? burgerContainer.querySelector('.b-menu') : null;
+  const burgerBrand = burgerContainer ? burgerContainer.querySelector('.b-brand') : null;
+  const burgerNav = document.querySelector('.b-nav');
+  const navList = burgerNav ? burgerNav.querySelector('ul') : null;
+  const langToggle = document.querySelector('.lang-toggle-wrap');
+  const langOriginalParent = langToggle ? langToggle.parentElement : null;
+  const langSlot = langToggle ? document.createElement('li') : null;
+  const mediaQuery = window.matchMedia('(max-width: 900px)');
+
+  if (!burgerContainer || !burgerMenu || !burgerNav || !navList) return;
+  if (langSlot) langSlot.className = 'b-lang';
+
+  const placeLangInNav = () => {
+    if (!langToggle || !langSlot) return;
+    if (!langSlot.contains(langToggle)) {
+      langSlot.appendChild(langToggle);
+    }
+    if (!navList.contains(langSlot)) {
+      navList.insertBefore(langSlot, navList.firstChild);
+    }
+  };
+
+  const restoreLang = () => {
+    if (!langToggle || !langSlot || !langOriginalParent) return;
+    if (langSlot.contains(langToggle)) {
+      langOriginalParent.insertBefore(langToggle, langOriginalParent.firstChild || null);
+    }
+    if (langSlot.parentNode) {
+      langSlot.parentNode.removeChild(langSlot);
+    }
+  };
+
+  const applyLangPlacement = () => {
+    if (!langToggle) return;
+    if (mediaQuery.matches) {
+      placeLangInNav();
+    } else {
+      restoreLang();
+    }
+  };
+
+  const toggle = (force) => {
+    const shouldOpen = typeof force === 'boolean' ? force : !burgerContainer.classList.contains('open');
+    burgerContainer.classList.toggle('open', shouldOpen);
+    burgerNav.classList.toggle('open', shouldOpen);
+    body.classList.toggle('open', shouldOpen);
+    burgerMenu.setAttribute('aria-expanded', String(shouldOpen));
+
+    applyLangPlacement();
+  };
+
+  const handleKey = (event) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      toggle();
+    }
+  };
+
+  burgerMenu.addEventListener('click', () => toggle());
+  burgerMenu.addEventListener('keydown', handleKey);
+
+  if (burgerBrand) {
+    burgerBrand.addEventListener('click', () => toggle());
+    burgerBrand.addEventListener('keydown', handleKey);
+  }
+
+  const links = Array.from(burgerNav.querySelectorAll('a'));
+  links.forEach((link) => link.addEventListener('click', () => {
+    if (burgerContainer.classList.contains('open')) {
+      toggle(false);
+    }
+  }));
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && burgerContainer.classList.contains('open')) {
+      toggle(false);
+    }
+  });
+
+  const handleMediaChange = (event) => {
+    if (!langToggle) return;
+    if (event.matches) {
+      placeLangInNav();
+    } else {
+      restoreLang();
+    }
+  };
+
+  if (typeof mediaQuery.addEventListener === 'function') {
+    mediaQuery.addEventListener('change', handleMediaChange);
+  } else if (typeof mediaQuery.addListener === 'function') {
+    mediaQuery.addListener(handleMediaChange);
+  }
+
+  applyLangPlacement();
+}
+
+
+function initEventGalleryFilters() {
+  const filterWrap = document.querySelector('.event-filter__controls');
+  if (!filterWrap) return;
+  const buttons = Array.from(filterWrap.querySelectorAll('[data-filter]'));
+  const items = Array.from(document.querySelectorAll('section.event'));
+  if (!items.length) return;
+
+  const showItem = (item) => {
+    if (item.dataset.filterState === 'hiding') {
+      delete item.dataset.filterState;
+    }
+    if (!item.hasAttribute('hidden')) {
+      requestAnimationFrame(() => item.classList.remove('event--hiding'));
+      return;
+    }
+    item.removeAttribute('hidden');
+    item.classList.add('event--hiding');
+    requestAnimationFrame(() => {
+      item.classList.remove('event--hiding');
+    });
+  };
+
+  const hideItem = (item) => {
+    if (item.hasAttribute('hidden') || item.dataset.filterState === 'hiding') return;
+    item.dataset.filterState = 'hiding';
+    item.classList.add('event--hiding');
+    const onTransitionEnd = (event) => {
+      if (event.propertyName !== 'opacity') return;
+      if (item.dataset.filterState !== 'hiding') {
+        item.removeEventListener('transitionend', onTransitionEnd);
+        return;
+      }
+      item.setAttribute('hidden', '');
+      item.classList.remove('event--hiding');
+      delete item.dataset.filterState;
+      item.removeEventListener('transitionend', onTransitionEnd);
+    };
+    item.addEventListener('transitionend', onTransitionEnd);
+  };
+
+  const applyFilter = (filter) => {
+    items.forEach((item) => {
+      const match = filter === 'all' || item.classList.contains(filter);
+      if (match) {
+        showItem(item);
+      } else {
+        hideItem(item);
+      }
+    });
+  };
+
+  filterWrap.addEventListener('click', (event) => {
+    const button = event.target.closest('[data-filter]');
+    if (!button || !filterWrap.contains(button)) return;
+
+    const filterValue = button.dataset.filter;
+    if (!filterValue) return;
+
+    buttons.forEach((btn) => {
+      const isActive = btn === button;
+      btn.classList.toggle('is-active', isActive);
+      btn.setAttribute('aria-pressed', String(isActive));
+    });
+
+    applyFilter(filterValue);
+    trackEvent('event_filter_click', { filter: filterValue });
+  });
+}
+
+function initFloatingSocial() {
+  const floating = document.querySelector('.floating-social');
+  const hero = document.querySelector('.hero');
+  if (!floating || !hero) return;
+
+  const observer = new IntersectionObserver(([entry]) => {
+    if (entry && entry.isIntersecting) {
+      floating.classList.remove('-visible');
+    } else {
+      floating.classList.add('-visible');
+    }
+  }, { threshold: 0.1 });
+
+  observer.observe(hero);
+}
+
+
 // Init
 document.addEventListener('DOMContentLoaded', () => {
   setupHeader();
@@ -658,6 +847,9 @@ document.addEventListener('DOMContentLoaded', () => {
   renderFeedback();
   renderSpeakers();
   renderEventSpeakers();
+  initEventGalleryFilters();
+  initBurgerMenu();
+  initFloatingSocial();
   // ticker removed
   lazyLoadBackgrounds();
   initTeamScroll();
