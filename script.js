@@ -582,12 +582,29 @@ function prefersReducedMotion() {
 // Header scroll behavior
 function setupHeader() {
   const header = $('.header');
+  if (!header) return;
   const onScroll = () => {
-    const solid = window.scrollY > 6;
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+    const solid = scrollTop > 6;
+    const nextState = solid ? 'true' : 'false';
+    if (header.dataset.solidState === nextState) return;
+    header.dataset.solidState = nextState;
     header.classList.toggle('header--solid', solid);
+    document.body.classList.toggle('has-scrolled', solid);
+    if (solid) {
+      header.style.background = 'linear-gradient(to right, #0f476a 0%, #1c698c 100%)';
+      header.style.backgroundColor = '#0f476a';
+    } else {
+      header.style.background = 'transparent';
+      header.style.backgroundColor = 'transparent';
+    }
+    header.style.boxShadow = solid ? '0 2px 16px rgba(0,0,0,.15)' : 'none';
   };
-  onScroll();
-  window.addEventListener('scroll', onScroll, { passive: true });
+  const watch = () => {
+    onScroll();
+    requestAnimationFrame(watch);
+  };
+  watch();
 }
 
 // Ticker render
