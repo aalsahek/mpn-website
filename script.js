@@ -853,7 +853,6 @@ function initFloatingSocial() {
   observer.observe(hero);
 }
 
-
 // Init
 document.addEventListener('DOMContentLoaded', () => {
   setupHeader();

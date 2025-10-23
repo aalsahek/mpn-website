@@ -932,6 +932,132 @@ footer { background: var(--navy); color: #fff; margin-top: 40px; }
 .team-header h2 { margin: 0 0 4px; font-size: 32px; font-weight: 800; color: var(--navy); }
 .team-header p { margin: 0; color: #516386; }
 
+.contact-card-container {
+  position: relative;
+  max-width: 960px;
+  margin: clamp(32px, 6vw, 56px) auto;
+  padding: clamp(24px, 3.6vw, 32px);
+  display: grid;
+  gap: clamp(18px, 3vw, 24px);
+}
+
+.contact-card-links {
+  position: absolute;
+  top: clamp(18px, 3vw, 26px);
+  right: clamp(18px, 3vw, 26px);
+  z-index: 3;
+}
+
+.contact-card-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  position: relative;
+  border-radius: 50%;
+  box-shadow: 0 6px 18px rgba(20, 52, 116, 0.28);
+}
+
+.contact-card-links a::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  animation: none;
+}
+
+.contact-card-links a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--deep-blue), var(--royal-blue));
+  -webkit-mask: url('images/linkedin-icon.png') center / contain no-repeat;
+          mask: url('images/linkedin-icon.png') center / contain no-repeat;
+}
+
+.contact-card-links a:hover::before,
+.contact-card-links a:focus-visible::before {
+  animation: hero-pulse 2s infinite;
+}
+
+.contact-card-links img {
+  display: none;
+}
+
+.contact-card-body {
+  display: grid;
+  gap: clamp(12px, 2.8vw, 20px);
+}
+
+.contact-card-meta {
+  color: rgba(19, 44, 76, 0.72);
+}
+
+.contact-card-meta span:last-child {
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.contact-card-subheading {
+  letter-spacing: 0.14em;
+}
+
+.contact-card-headline {
+  margin: 0;
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  font-weight: 700;
+  line-height: 1.25;
+  color: #13294b;
+}
+.contact-card-headline--large {
+  font-size: 32px;
+  line-height: 1.2;
+}
+
+.contact-card-description {
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: rgba(19, 41, 75, 0.8);
+}
+
+.team .contact-card-container.blog-card {
+  transition: none;
+  gap: clamp(31.6px, calc(3.6vw + 10px), 38.8px);
+}
+.team .contact-card-container.blog-card:hover,
+.team .contact-card-container.blog-card:focus-visible {
+  transform: none;
+  box-shadow: inset -2px 2px rgba(255, 255, 255, 0.88), -22px 22px 40px rgba(15, 35, 75, 0.16);
+}
+
+@media (max-width: 640px) {
+  .contact-card-container {
+    margin: clamp(24px, 6vw, 36px) 20px;
+  }
+}
+
+@media (min-width: 768px) {
+  .team .contact-card-container.blog-card {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+    align-items: stretch;
+    column-gap: clamp(40px, 6vw, 72px);
+    row-gap: clamp(18px, 3vw, 24px);
+  }
+  .team .contact-card-container.blog-card .blog-card__image {
+    aspect-ratio: auto;
+    height: 100%;
+    min-height: 280px;
+  }
+
+  .team .contact-card-container.blog-card .blog-card__image img {
+    height: 100%;
+  }
+}
+
 .people { max-width: 1050px; margin: 0 auto; padding-top: 30px; display: grid; gap: 24px; }
 .person { position: relative; min-height: 380px; background: #0b1a33; color: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 40px rgba(15, 35, 75, .2); will-change: transform; transition: transform .12s linear; }
 .person .links { position: absolute; right: 16px; top: 14px; z-index: 3; text-transform: uppercase; letter-spacing: .12em; font-size: 12px; font-weight: 800; }
@@ -1317,6 +1443,13 @@ section.event[hidden] {
   line-height: 1.4;
 }
 
+.contact-card-container.blog-card .contact-card-headline--large {
+  font-size: 32px;
+  line-height: 1.2;
+  color: #13294b;
+  margin-top: 20px;
+}
+
 .blog-card p {
   margin: 0;
   color: rgba(13, 34, 58, 0.78);
@@ -1483,4 +1616,10 @@ section.event[hidden] {
 
 @media (max-width: 720px) {
   .hero-shape { display: none !important; }
+}
+.team .contact-card-container.blog-card::after {
+  left: calc(50% + clamp(20px, 3vw, 28px) - 10px);
+  right: clamp(24px, 4vw, 32px);
+  width: auto;
+  margin-left: 0;
 }
