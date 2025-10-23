@@ -729,6 +729,27 @@ section { padding: 64px 0; }
   .events-slider .dots { display:none; }
 }
 
+@media (max-width: 767px) {
+  .event__grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .event__grid .event__intro {
+    order: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .event__grid .event__intro .section__title { order: 1; }
+  .event__grid .event__intro .section__sub { order: 2; }
+  .event__grid .event__intro .story__speakers { order: 3; }
+  .event__grid .gallery_wrapper {
+    order: 4;
+    width: 100%;
+  }
+}
+
 /* Feedback */
 .feedback { background: transparent; }
 .notes { display: grid; grid-template-columns: 1fr; gap: 16px; }
