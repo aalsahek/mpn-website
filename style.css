@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Inclusive+Sans:wght@400;600;700&family=Public+Sans:wght@400;500;600&display=swap');
+
 :root {
-  --navy: #243c64;          /* primary background/footer, headings */
+  --navy: #0c2b4e;          /* primary background/footer, headings */
   --deep-blue: #2c4484;      /* buttons, gradients */
   --royal-blue: #143474;     /* gradients/accents */
   --light-blue: #ACCCE4;     /* surfaces, chips */
@@ -40,6 +42,24 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.headline {
+  margin: 0;
+  color: inherit;
+  font-family: "Inclusive Sans", Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+
+.body-text {
+  font-family: "Public Sans", Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  font-size: 1rem;
+  color: rgba(11, 26, 51, 0.88);
+  line-height: 1.7;
+  margin: 0 0 1rem;
+}
+
 /* Utilities */
 .container { width: 100%; max-width: var(--max-w); margin: 0 auto; padding: 0 20px; }
 .visually-hidden { position: absolute !important; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); border: 0; white-space: nowrap; }
@@ -63,20 +83,21 @@ html, body, .hero { overflow-anchor: none; }
   backdrop-filter: none;
 }
 .header--solid {
-  background: linear-gradient(to right, #0f476a 0%, #1c698c 100%);
-  background-color: #0f476a;
+  background: #0c2b4e !important;
+  background-color: #0c2b4e !important;
   box-shadow: 0 2px 16px rgba(0,0,0,.15);
 }
 .has-scrolled .header {
-  background: linear-gradient(to right, #0f476a 0%, #1c698c 100%);
-  background-color: #0f476a;
+  background: #0c2b4e !important;
+  background-color: #0c2b4e !important;
   box-shadow: 0 2px 16px rgba(0,0,0,.15);
 }
 .header__inner { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-.header__brand { display: flex; align-items: center; gap: 10px; color: #fff; font-weight: 700; letter-spacing: .3px; }
-.header__logo { width: 36px; height: 36px; border-radius: 50%; background: radial-gradient(circle at 30% 30%, var(--deep-blue), var(--royal-blue)); display: grid; place-items: center; color: #fff; font-size: 16px; }
+.header__brand { display: flex; align-items: center; gap: 0; color: #fff; font-weight: 700; letter-spacing: .3px; }
+.header__brand span[aria-label="Muslim Professionals Network"] { margin-left: -5px; }
+.header__logo { width: 42px; height: 42px; border-radius: 50%; object-fit: contain; display: block; }
 .header__nav { display: none; align-items: center; gap: 18px; }
-.header__nav a { color: #fff; opacity: .95; font-weight: 500; }
+.header__nav a { color: #f4f4f4; opacity: .95; font-weight: 500; }
 .header__nav a { position: relative; padding-bottom: 6px; }
 /* Navbar hover/active underline pulse (scaleY reveal) */
 .header__nav a::after {
@@ -84,7 +105,7 @@ html, body, .hero { overflow-anchor: none; }
   position: absolute;
   left: 0; right: 0; bottom: 0;
   height: 3px;
-  background: linear-gradient(135deg, var(--deep-blue), var(--royal-blue));
+  background: #f4f4f4;
   transform: scaleY(0);
   transform-origin: bottom;
   transition: transform .25s ease;
@@ -519,8 +540,12 @@ section { padding: 64px 0; }
 
 /* Left panel — Vision background gradient */
 .vision-section {
-  background: linear-gradient(to right, #0f476a 0%, #1c698c 100%);
-  color: #E8EBEF;
+  background: #0c2b4e;
+  color: #f4f4f4;
+}
+.vision-section .headline,
+.vision-section .body-text {
+  color: #f4f4f4;
 }
 
 /* Right panel — solid light grey, diagonal on the left */
@@ -556,9 +581,8 @@ section { padding: 64px 0; }
   font-size: 1.1rem;
   line-height: 1.6;
   margin: 0; /* rely on grid gaps */
+  max-width: calc(42ch + 10px);
 }
-/* readable line-length */
-.mission-section .content-wrapper p { max-width: 42ch; }
 
 /* Title/text placement inside each panel */
 @media (min-width: 700px) {
@@ -701,6 +725,26 @@ section { padding: 64px 0; }
 .events-slider .event-card__meta { color:#f1f5fb; font-size: .95rem; line-height:1.4; max-width: 16rem; }
 .events-slider .event-card__btn { padding:.55rem 1.1rem; border:none; border-radius:9999px; background: var(--accent); color:#fff; font-size:.85rem; font-weight:700; cursor:pointer; }
 .events-slider .event-card__btn:hover { filter: brightness(1.1); }
+.events-slider .event-card__tag {
+  position: absolute;
+  top: 1rem;
+  background: #fcbd47;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: .56rem;
+  font-weight: 700;
+  letter-spacing: .06em;
+  padding: .2rem .65rem;
+  border-radius: 999px;
+}
+.events-slider .event-card:not([active]) .event-card__tag {
+  left: 50%;
+  transform: translateX(-50%);
+}
+.events-slider .event-card[active] .event-card__tag {
+  left: 1rem;
+  transform: none;
+}
 .events-slider .dots { display:flex; gap:.5rem; justify-content:center; padding: 6px 0 10px; }
 .events-slider .dot { width: 11px; height: 11px; border-radius: 50%; background: rgba(0,0,0,.18); cursor: pointer; transition: .3s; }
 .events-slider .dot.active { background: var(--accent); transform: scale(1.15); }
@@ -839,6 +883,9 @@ section { padding: 64px 0; }
 .contact-page .contact-option:focus-visible {
   box-shadow: 0 10px 24px rgba(20, 52, 116, 0.35);
 }
+.contact-page .btn--primary {
+  background: #0c2b4e;
+}
 
 @media (max-width: 800px) {
   .contact-page .contact-links, .contact-page .contact-form-wrapper { width: 100%; }
@@ -861,7 +908,7 @@ section { padding: 64px 0; }
 .speakers__more { margin-top: 12px; }
 
 /* Footer */
-footer { background: var(--navy); color: #fff; margin-top: 40px; }
+footer { background: #0c2b4e; color: #fff; margin-top: 40px; }
 .footer__top { display: grid; gap: 14px; grid-template-columns: 1fr; padding: 24px 20px; border-bottom: 1px solid rgba(255,255,255,.18); }
 .footer__brand { display: flex; align-items: center; gap: 10px; font-weight: 700; }
 .footer__logo { width: 40px; height: 40px; border-radius: 50%; background: radial-gradient(circle at 30% 30%, var(--deep-blue), var(--royal-blue)); display: grid; place-items: center; color: #fff; }
@@ -1253,6 +1300,7 @@ footer { background: var(--navy); color: #fff; margin-top: 40px; }
   padding: 0 24px;
   min-height: 56px;
   line-height: 1;
+  background: #0c2b4e;
   font-size: 1.2rem;
   border-radius: 999px;
   box-shadow: 0 6px 18px rgba(20, 52, 116, 0.28);

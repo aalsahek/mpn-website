@@ -9,12 +9,12 @@ function trackEvent(event, detail = {}) {
 
 // Data sources (placeholders)
 const events = [
-  { id: 'e1', name: 'Career Pathways in Tech', date: '2025-09-12 • Helsinki', image: 'https://picsum.photos/seed/tech/1200/700', url: '#', featured: true },
-  { id: 'e2', name: 'Leadership Roundtable', date: '2025-10-03 • Espoo', image: 'https://picsum.photos/seed/leadership/1200/700', url: '#'},
-  { id: 'e3', name: 'Mentorship Kickoff Night', date: '2025-10-21 • Helsinki', image: 'https://picsum.photos/seed/mentorship/1200/700', url: '#'},
-  { id: 'e4', name: 'Personal Finance Workshop', date: '2025-11-02 • Vantaa', image: 'https://picsum.photos/seed/finance/1200/700', url: '#'},
-  { id: 'e5', name: 'Entrepreneurship Stories', date: '2025-11-18 • Tampere', image: 'https://picsum.photos/seed/startup/1200/700', url: '#'},
-  { id: 'e6', name: 'Public Speaking Lab', date: '2025-12-05 • Helsinki', image: 'https://picsum.photos/seed/speaking/1200/700', url: '#'}
+  { id: 'e1', name: 'MPN & Karamah initiative', date: '2026-02-07 • Helsinki', image: 'https://picsum.photos/seed/tech/1200/700', url: '#', featured: true, isoDate: '2026-02-07' },
+  { id: 'e2', name: 'Islamic Psychology', date: '2025-08-03 • Helsinki', image: 'https://picsum.photos/seed/leadership/1200/700', url: '#', isoDate: '2025-08-03' },
+  { id: 'e3', name: 'Mentorship Kickoff Night', date: '2025-10-21 • Helsinki', image: 'https://picsum.photos/seed/mentorship/1200/700', url: '#', isoDate: '2025-10-21' },
+  { id: 'e4', name: 'Personal Finance Workshop', date: '2025-11-02 • Vantaa', image: 'https://picsum.photos/seed/finance/1200/700', url: '#', isoDate: '2025-11-02' },
+  { id: 'e5', name: 'Entrepreneurship Stories', date: '2025-11-18 • Tampere', image: 'https://picsum.photos/seed/startup/1200/700', url: '#', isoDate: '2025-11-18' },
+  { id: 'e6', name: 'Public Speaking Lab', date: '2025-12-05 • Helsinki', image: 'https://picsum.photos/seed/speaking/1200/700', url: '#', isoDate: '2025-12-05' }
 ];
 
 const speakers = [
@@ -197,6 +197,18 @@ function renderPrinciples(lang='en') {
 function renderEvents() {
   const featuredEl = $('#featured-event');
   const hasFeatured = !!featuredEl;
+
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  events.forEach(ev => {
+    if (!ev.isoDate) {
+      ev.isUpcoming = false;
+      return;
+    }
+    const evDate = new Date(ev.isoDate);
+    ev.isUpcoming = !Number.isNaN(evDate.valueOf()) && evDate >= today;
+  });
+
   if (hasFeatured) {
     const featured = events.find(e => e.featured) || events[0];
     featuredEl.href = featured.url;
@@ -229,6 +241,7 @@ function renderEvents() {
     article.innerHTML = `
       <img class="event-card__bg" src="${e.image}" alt="${e.name}" loading="lazy" />
       <div class="event-card__content">
+        ${e.isUpcoming ? '<span class="event-card__tag">Upcoming</span>' : ''}
         <h3 class="event-card__title">${e.name}</h3>
         <div>
           <p class="event-card__meta">${e.date}</p>
