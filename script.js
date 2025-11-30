@@ -10,11 +10,11 @@ function trackEvent(event, detail = {}) {
 // Data sources (placeholders)
 const events = [
   { id: 'e1', name: 'MPN & Karamah initiative', date: '2026-02-07 • Helsinki', image: 'https://picsum.photos/seed/tech/1200/700', url: '#', featured: true, isoDate: '2026-02-07' },
-  { id: 'e2', name: 'Islamic Psychology', date: '2025-08-03 • Helsinki', image: 'https://picsum.photos/seed/leadership/1200/700', url: '#', isoDate: '2025-08-03' },
-  { id: 'e3', name: 'Mentorship Kickoff Night', date: '2025-10-21 • Helsinki', image: 'https://picsum.photos/seed/mentorship/1200/700', url: '#', isoDate: '2025-10-21' },
-  { id: 'e4', name: 'Personal Finance Workshop', date: '2025-11-02 • Vantaa', image: 'https://picsum.photos/seed/finance/1200/700', url: '#', isoDate: '2025-11-02' },
-  { id: 'e5', name: 'Entrepreneurship Stories', date: '2025-11-18 • Tampere', image: 'https://picsum.photos/seed/startup/1200/700', url: '#', isoDate: '2025-11-18' },
-  { id: 'e6', name: 'Public Speaking Lab', date: '2025-12-05 • Helsinki', image: 'https://picsum.photos/seed/speaking/1200/700', url: '#', isoDate: '2025-12-05' }
+  { id: 'e2', name: 'Islamic Psychology', date: '2025-08-03 • Helsinki', image: 'images/islamic-psychology-bg.JPG', url: '#', isoDate: '2025-08-03' },
+  { id: 'e3', name: 'Your Mind Matters', date: '2025-07-19 • Vantaa', image: 'images/mental-health-bg.JPG', url: '#', isoDate: '2025-07-19' },
+  { id: 'e4', name: 'Startups & Founders', date: '2025-05-29 • Espoo', image: 'images/Startups & Founders.jpg', url: '#', isoDate: '2025-05-29' },
+  { id: 'e5', name: 'Mid-Ramadan Reflections', date: '2025-03-12 • Helsinki', image: 'images/Mid-Ramadan Reflections.JPG', url: '#', isoDate: '2025-03-12' },
+  { id: 'e6', name: 'Deconstructing AI', date: '2025-02-23 • Helsinki', image: 'images/Deconstructing AI.JPG', url: '#', isoDate: '2025-02-23' }
 ];
 
 const speakers = [
