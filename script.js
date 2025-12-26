@@ -10,12 +10,18 @@ function trackEvent(event, detail = {}) {
 // Data sources (placeholders)
 const events = [
   { id: 'e1', name: 'MPN & Karamah initiative', date: '2026-02-07 • Helsinki', image: 'https://picsum.photos/seed/tech/1200/700', url: '#', featured: true, isoDate: '2026-02-07' },
-  { id: 'e2', name: 'Islamic Psychology', date: '2025-08-03 • Helsinki', image: 'images/islamic-psychology-bg.JPG', url: '#', isoDate: '2025-08-03' },
+  { id: 'e2', name: 'Islamic Psychology', date: '03.08.2025 • Helsinki', image: 'images/islamic-psychology-bg.JPG', url: '#', isoDate: '2025-08-03' },
   { id: 'e3', name: 'Your Mind Matters', date: '2025-07-19 • Vantaa', image: 'images/mental-health-bg.JPG', url: '#', isoDate: '2025-07-19' },
   { id: 'e4', name: 'Startups & Founders', date: '2025-05-29 • Espoo', image: 'images/Startups & Founders.jpg', url: '#', isoDate: '2025-05-29' },
   { id: 'e5', name: 'Mid-Ramadan Reflections', date: '2025-03-12 • Helsinki', image: 'images/Mid-Ramadan Reflections.JPG', url: '#', isoDate: '2025-03-12' },
   { id: 'e6', name: 'Deconstructing AI', date: '2025-02-23 • Helsinki', image: 'images/Deconstructing AI.JPG', url: '#', isoDate: '2025-02-23' }
 ];
+
+const impactStats = {
+  events: 14,
+  speakers: 26,
+  participants: 550,
+};
 
 const speakers = [
   { id: 's1', name: 'Aisha Khan', title: 'Product Leader, TechCo', image: 'images/avatar-placeholder.jpg', url: '#' },
@@ -25,18 +31,18 @@ const speakers = [
 
 // Event-specific speakers (used on events.html)
 const eventSpeakers = {
-  'career-networking-night': [
-    { name: 'Aisha Khan', role: 'Product Leader', image: 'images/avatar-placeholder.jpg' },
-    { name: 'Omar Lehtinen', role: 'Founder', image: 'images/avatar-placeholder.jpg' },
-    { name: 'Fatima Rahman', role: 'Policy Analyst', image: 'images/avatar-placeholder.jpg' },
+  'islamic-psychology': [
+    { name: 'Dr. Rothman', role: 'Head of Islamic Psychology, Cambridge Muslim College', image: 'images/avatar-placeholder.jpg' },
   ],
   'leadership-workshop': [
-    { name: 'Aisha Khan', role: 'Product Leader', image: 'images/avatar-placeholder.jpg' },
-    { name: 'Zaki Azedani', role: 'Marketing Executive', image: 'images/avatar-placeholder.jpg' },
+    { name: 'Fadumo Ali', role: 'Entrepreneur, Mentor and CEO of Hoiwa', image: 'images/avatar-placeholder.jpg' },
+    { name: 'Sami Abuzarifa', role: 'CEO & Founder, Klu Technologies', image: 'images/avatar-placeholder.jpg' },
+    { name: 'Guleed Ahmed', role: 'CEO & Co-founder, RecorDr', image: 'images/avatar-placeholder.jpg' },
+    { name: 'Moyeen Ahmad', role: 'Founder, Vitacom; Quality & Regulatory Advisor, Evondos', image: 'images/avatar-placeholder.jpg' },
   ],
   'tech-mentoring-circle': [
-    { name: 'Omar Lehtinen', role: 'Senior Engineer', image: 'images/avatar-placeholder.jpg' },
-    { name: 'Mustafa Aal-sahek', role: 'IT Specialist', image: 'images/avatar-placeholder.jpg' },
+    { name: 'Dr. Hibo', role: '', image: 'images/avatar-placeholder.jpg' },
+    { name: 'Dr. Ibrahim', role: '', image: 'images/avatar-placeholder.jpg' },
   ],
   'healthcare-careers-panel': [
     { name: 'Mehwish Ahmed', role: 'Energy Specialist', image: 'images/avatar-placeholder.jpg' },
@@ -124,17 +130,16 @@ const translations = {
     'principles.sub': 'Three pillars guide everything we do.',
     'principles.headline': 'The Core of Our Experience',
     'principles.learning.title': 'Learning',
-    'principles.learning.text': 'Workshops, career stories, and open resources for continuous growth.',
+    'principles.learning.text': 'We create meaningful learning experiences that inspire growth, curiosity, and confidence. Through workshops, conversations, and shared knowledge, we equip Muslim professionals with the tools to thrive personally, professionally, and spiritually.',
     'principles.networking.title': 'Networking',
-    'principles.networking.text': 'Spaces to meet, share, and build collaborations.',
+    'principles.networking.text': 'We build trusted spaces where genuine connections flourish. By bringing people together across industries, backgrounds, and experiences, we foster collaboration, shared opportunities, and a strong sense of belonging.',
     'principles.empowering.title': 'Empowering',
-    'principles.empowering.text': 'We elevate role models and support one another.',
+    'principles.empowering.text': 'We elevate voices, celebrate talent, and strengthen identity. With partners, sponsors, volunteers, and supportive communities, we turn ambition into action, opening doors, building leadership, and enabling Muslims in Finland to succeed with confidence and integrity.',
     'vision.title': 'Our Vision',
-    'vision.text': 'A thriving network where Muslim professionals in Finland connect, elevate one another, and contribute to a just, prosperous society.',
+    'vision.text': 'A Finland where Muslim professionals are seen, respected, and included in every level of working life, and where Islamic values and professional excellence are not in conflict but openly coexist.',
     'mission.title': 'Our Mission',
-    'mission.text': 'Create opportunities for learning, mentorship, and collaboration; celebrate role models; and build bridges across communities and industries.',
-    'events.title': 'Our Services',
-    'events.sub': 'Featured and upcoming gatherings, workshops, and talks.',
+    'mission.text': 'Create spaces, knowledge, and opportunities for Muslim professionals in Finland. We host events, build connections across industries, share practical guidance for navigating working life, and open doors for collaboration between Muslims and the wider society.',
+    'events.title': 'Our Events',
     'feedback.title': 'Feedback we’ve received',
     'feedback.sub': 'Anonymous notes from attendees and members.',
     'speakers.title': 'Speakers we’ve hosted',
@@ -866,6 +871,20 @@ function initFloatingSocial() {
   observer.observe(hero);
 }
 
+function applyImpactStats() {
+  const statEls = document.querySelectorAll('[data-stat]');
+  if (!statEls.length) return;
+  statEls.forEach((el) => {
+    const key = el.getAttribute('data-stat');
+    if (!key || !(key in impactStats)) return;
+    const value = impactStats[key];
+    el.setAttribute('data-count', value);
+    if (!el.classList.contains('progress-circle__percent')) {
+      el.textContent = '0';
+    }
+  });
+}
+
 // Init
 document.addEventListener('DOMContentLoaded', () => {
   setupHeader();
@@ -882,6 +901,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // ticker removed
   lazyLoadBackgrounds();
   initTeamScroll();
+  applyImpactStats();
   initStatisticsCounters();
 
   // Language toggle
