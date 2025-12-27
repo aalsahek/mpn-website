@@ -12,7 +12,7 @@ const events = [
   { id: 'e1', name: 'MPN & Karamah initiative', date: '2026-02-07 • Helsinki', image: 'https://picsum.photos/seed/tech/1200/700', url: '#', featured: true, isoDate: '2026-02-07' },
   { id: 'e2', name: 'Islamic Psychology', date: '03.08.2025 • Helsinki', image: 'images/islamic-psychology-bg.JPG', url: '#', isoDate: '2025-08-03' },
   { id: 'e3', name: 'Your Mind Matters', date: '2025-07-19 • Vantaa', image: 'images/mental-health-bg.JPG', url: '#', isoDate: '2025-07-19' },
-  { id: 'e4', name: 'Startups & Founders', date: '2025-05-29 • Espoo', image: 'images/Startups & Founders.jpg', url: '#', isoDate: '2025-05-29' },
+  { id: 'e4', name: 'Startups & Founders', date: '2025-05-29 • Espoo', image: 'images/startups-and-founders.jpg', url: '#', isoDate: '2025-05-29' },
   { id: 'e5', name: 'Mid-Ramadan Reflections', date: '2025-03-12 • Helsinki', image: 'images/Mid-Ramadan Reflections.JPG', url: '#', isoDate: '2025-03-12' },
   { id: 'e6', name: 'Deconstructing AI', date: '2025-02-23 • Helsinki', image: 'images/Deconstructing AI.JPG', url: '#', isoDate: '2025-02-23' }
 ];
@@ -945,7 +945,8 @@ document.addEventListener('DOMContentLoaded', () => {
   setupHeader();
   setupDrawer();
   bindTracking();
-  renderPrinciples('en');
+  const savedLang = (localStorage.getItem('mpn-lang') || 'en').toLowerCase() === 'fi' ? 'fi' : 'en';
+  renderPrinciples(savedLang);
   renderEvents();
   renderFeedback();
   renderSpeakers();
@@ -965,9 +966,10 @@ document.addEventListener('DOMContentLoaded', () => {
           const current = document.documentElement.lang || 'en';
           const next = current === 'en' ? 'fi' : 'en';
           setLanguage(next);
+          localStorage.setItem('mpn-lang', next);
           trackEvent('lang_toggle_click', { lang: next });
         });
-  setLanguage('en');
+  setLanguage(savedLang);
 });
 
 // Team section scroll animation (About page)
