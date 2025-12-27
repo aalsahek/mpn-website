@@ -67,16 +67,21 @@ const eventSpeakers = {
 };
 
 const feedback = [
-  'Great energy and welcoming community. Felt seen and supported.',
-  'Actionable advice I used the next day — thank you!',
-  'Mentorship program matched me with an amazing role model.',
-  'Loved the diversity of speakers and topics.',
-  'Best networking I’ve had in years.',
-  'Events are well-organized and accessible.',
-  'Inspiring to see Muslim professionals thriving.',
-  'The finance session helped me build a plan.',
-  'Appreciated the safe and respectful space.',
-  'I met my current team here.'
+  'Interesting topic and discussions',
+  'All speakers came with lovely perspectives',
+  'I was satisfied overall',
+  'You guys are doing amazing',
+  'More time for networking and for the speekers',
+  'I think this was my favorite event so far',
+  'More events like this please!',
+  'It was fun and very interactive!',
+  'Nice love atmosphere, nice people and talented',
+  'Great event',
+  'Informative and interactive! God bless',
+  'It was nice and fruitful',
+  'Important topic, fun atmosphere, and great food!',
+  'MPN events bring like-minded together ❤️',
+  'Nice event. Would like to visit more'
 ];
 
 const translations = {
