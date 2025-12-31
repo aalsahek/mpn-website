@@ -114,7 +114,8 @@ html, body, .hero { overflow-anchor: none; }
 .header__nav a:hover::after,
 .header__nav a.-active::after { transform: scaleY(1); }
 .header__right { display: flex; align-items: center; gap: 10px; }
-.lang-toggle-wrap { display: inline-flex; align-items: center; gap: 6px; }
+.lang-toggle-wrap { display: none !important; }
+.b-lang { display: none !important; }
 .lang-label { display:none; }
 /* Toggle (skewed) minimal, transparent background */
 .tgl { display: none; }
@@ -187,22 +188,22 @@ html, body, .hero { overflow-anchor: none; }
 .b-nav { display: none; }
 
 @media (max-width: 900px) {
-  body::after {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.45);
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity .35s ease;
-    z-index: 1100;
-    pointer-events: none;
-  }
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: transparent;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .35s ease;
+  z-index: 1100;
+  pointer-events: none;
+}
 
-  body.open::after {
-    opacity: 1;
-    visibility: visible;
-  }
+body.open::after {
+  opacity: 0;
+  visibility: hidden;
+}
 
   body.open { overflow: hidden; }
 
