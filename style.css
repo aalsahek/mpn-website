@@ -893,6 +893,43 @@ section { padding: 64px 0; }
   box-shadow: 0 6px 18px rgba(20, 52, 116, 0.28);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
+.contact-page .contact-option--disabled {
+  background: #0c2b4e !important;
+  color: #fff !important;
+  cursor: not-allowed;
+  pointer-events: none;
+  box-shadow: none;
+}
+
+.contact-option--membership {
+  background: rgba(255, 255, 255, 0.25) !important;
+  color: #fff !important;
+  border: 1.5px solid transparent !important;
+  border-image: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.9)) 1;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.25), 0 10px 24px rgba(0, 0, 0, 0.18) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  align-items: flex-end;
+  justify-content: center;
+  flex-direction: column;
+  text-align: right;
+  padding: 14px 20px;
+  gap: 4px;
+  background-clip: padding-box;
+}
+.contact-option--membership .contact-option__label {
+  display: block;
+  font-size: calc(0.9rem + 5px);
+  letter-spacing: 0.12em;
+  font-weight: 700;
+}
+.contact-option--membership .contact-option__sub {
+  display: block;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  opacity: 0.7;
+}
 
 .contact-page .contact-option:not(:last-child) {
   margin-bottom: clamp(16px, 3vw, 20px);

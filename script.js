@@ -93,7 +93,7 @@ const translations = {
   fi: {
     'hero.title': 'Vahvistamme muslimiammattilaisia Suomessa.',
     'hero.sub': 'Yhteisö oppimista, mentorointia ja verkostoitumista varten — rakennamme yhdessä myönteistä vaikutusta.',
-    'cta.support': 'Tue meitä',
+    'cta.support': 'JOIN US',
     'who.title': 'Kuka olemme',
     'who.desc': 'Muslim Professionals Network (MPN) on yhteisö muslimiammattilaisille Suomessa, joka tarjoaa tiloja, joissa voi verkostoitua, oppia ja vahvistaa toisiaan. Alkujaan Nuuksiossa järjestetty kokoontuminen elokuussa 2023 kasvoi nopeasti liikkeeksi, joka perustuu palveluun, mentorointiin ja arvoihin, jotka pohjautuvat uskoon.\n\nTänään MPN yhdistää muslimeja monenlaisista taustoista ja elämäntarinoista eri puolilta Suomea. Yhdessä kumppaneiden, sponsoreiden, vapaaehtoisten ja tukevien yhteisöjen kanssa järjestämme merkityksellisiä tapahtumia, tuemme mentorointia ja vahvistamme ääniä, jotta yksilöiden potentiaali voi toteutua ja uskonnollisesti suuntautunut johtajuus kasvaa tulevaisuudessa.',
     
@@ -158,7 +158,7 @@ const translations = {
   en: {
     'hero.title': 'Empowering Muslim professionals in Finland.',
     'hero.sub': 'We are a community of Muslim professionals fostering growth, mentorship, and positive impact through learning and networking. Join us in shaping a stronger, supportive ecosystem.',
-    'cta.support': 'Support Us',
+    'cta.support': 'JOIN US',
     'who.title': 'Who We Are',
     'who.desc': 'Muslim Professionals Network (MPN) is a non-profit, non-political community of Muslim professionals in Finland. We create spaces for networking, mentorship, and professional development, while staying rooted in Islamic values. Our work supports career growth, representation in Finnish working life, and honest dialogue between Muslims and the wider society.',
     
