@@ -12,7 +12,7 @@ const events = [
   { id: 'e1', name: 'MPN & Karamah initiative', date: '2026-02-07 • Helsinki', image: 'https://picsum.photos/seed/tech/1200/700', url: '#', featured: true, isoDate: '2026-02-07' },
   { id: 'e2', name: 'Islamic Psychology', date: '03.08.2025 • Helsinki', image: 'images/islamic-psychology-bg.JPG', url: '#', isoDate: '2025-08-03' },
   { id: 'e3', name: 'Your Mind Matters', date: '2025-07-19 • Vantaa', image: 'images/mental-health-bg.JPG', url: '#', isoDate: '2025-07-19' },
-  { id: 'e4', name: 'Startups & Founders', date: '29.05.2025 • Espoo', image: 'images/startups-and-founders.jpg', url: '#', isoDate: '2025-05-29' },
+  { id: 'e4', name: 'Startups & Founders', date: '29.05.2025 • Espoo', image: 'images/startups-and-founders.JPG', url: '#', isoDate: '2025-05-29' },
   { id: 'e5', name: 'Mid-Ramadan Reflections', date: '2025-03-12 • Helsinki', image: 'images/Mid-Ramadan Reflections.JPG', url: '#', isoDate: '2025-03-12' },
   { id: 'e6', name: 'Deconstructing AI', date: '2025-02-23 • Helsinki', image: 'images/Deconstructing AI.JPG', url: '#', isoDate: '2025-02-23' }
 ];
@@ -24,50 +24,50 @@ const impactStats = {
 };
 
 const speakers = [
-  { id: 's1', name: 'Aisha Khan', title: 'Product Leader, TechCo', image: 'images/avatar-placeholder.jpg', url: '#' },
-  { id: 's2', name: 'Omar Lehtinen', title: 'Founder, NorthLabs', image: 'images/avatar-placeholder.jpg', url: '#' },
-  { id: 's3', name: 'Fatima Rahman', title: 'Policy Analyst', image: 'images/avatar-placeholder.jpg', url: '#' }
+  { id: 's1', name: 'Aisha Khan', title: 'Product Leader, TechCo', image: 'images/avatar-placeholder.JPG', url: '#' },
+  { id: 's2', name: 'Omar Lehtinen', title: 'Founder, NorthLabs', image: 'images/avatar-placeholder.JPG', url: '#' },
+  { id: 's3', name: 'Fatima Rahman', title: 'Policy Analyst', image: 'images/avatar-placeholder.JPG', url: '#' }
 ];
 
 // Event-specific speakers (used on events.html)
 const eventSpeakers = {
   'islamic-psychology': [
-    { name: 'Dr. Rothman', role: 'Head of Islamic Psychology, Cambridge Muslim College', image: 'images/avatar-placeholder.jpg' },
+    { name: 'Dr. Rothman', role: 'Head of Islamic Psychology, Cambridge Muslim College', image: 'images/avatar-placeholder.JPG' },
   ],
   'startups-founders-journey': [
-    { name: 'Fadumo Ali', role: 'Entrepreneur, Mentor and CEO of Hoiwa', image: 'images/avatar-placeholder.jpg' },
-    { name: 'Sami Abuzarifa', role: 'CEO & Founder, Klu Technologies', image: 'images/avatar-placeholder.jpg' },
-    { name: 'Guleed Ahmed', role: 'CEO & Co-founder, RecorDr', image: 'images/avatar-placeholder.jpg' },
-    { name: 'Moyeen Ahmad', role: 'Founder, Vitacom; Quality & Regulatory Advisor, Evondos', image: 'images/avatar-placeholder.jpg' },
+    { name: 'Fadumo Ali', role: 'Entrepreneur, Mentor and CEO of Hoiwa', image: 'images/avatar-placeholder.JPG' },
+    { name: 'Sami Abuzarifa', role: 'CEO & Founder, Klu Technologies', image: 'images/avatar-placeholder.JPG' },
+    { name: 'Guleed Ahmed', role: 'CEO & Co-founder, RecorDr', image: 'images/avatar-placeholder.JPG' },
+    { name: 'Moyeen Ahmad', role: 'Founder, Vitacom; Quality & Regulatory Advisor, Evondos', image: 'images/avatar-placeholder.JPG' },
   ],
   'your-mind-matters': [
-    { name: 'Dr. Hibo', role: 'Medical Doctor', image: 'images/avatar-placeholder.jpg' },
-    { name: 'Dr. Ibrahim', role: 'Medical Doctor', image: 'images/avatar-placeholder.jpg' },
+    { name: 'Dr. Hibo', role: 'Medical Doctor', image: 'images/avatar-placeholder.JPG' },
+    { name: 'Dr. Ibrahim', role: 'Medical Doctor', image: 'images/avatar-placeholder.JPG' },
   ],
   'deconstructing-ai-workshop': [
-    { name: 'Adan Mohamed', role: 'Co-founder, Sykli Intelligence & Neogrant', image: 'images/avatar-placeholder.jpg' },
-    { name: 'Hussein Ismail', role: 'Co-founder Neogrant Oy & Sykli Intelligence', image: 'images/avatar-placeholder.jpg' },
+    { name: 'Adan Mohamed', role: 'Co-founder, Sykli Intelligence & Neogrant', image: 'images/avatar-placeholder.JPG' },
+    { name: 'Hussein Ismail', role: 'Co-founder Neogrant Oy & Sykli Intelligence', image: 'images/avatar-placeholder.JPG' },
   ],
   'entrepreneurship-meetup': [
-    { name: 'Hunderra Assefa', role: 'Co-founder, HHA International FZCO', image: 'images/avatar-placeholder.jpg' },
-    { name: 'Dr. Muhammad Zeeshan', role: 'President, Akhuwat NGO', image: 'images/avatar-placeholder.jpg' },
-    { name: 'Shabana Ahmadzai', role: 'Innovative Service Director', image: 'images/avatar-placeholder.jpg' },
-    { name: 'Ilkhom Khalimzoda', role: 'Postdoctoral Researcher, University of Jyväskylä', image: 'images/avatar-placeholder.jpg' },
+    { name: 'Hunderra Assefa', role: 'Co-founder, HHA International FZCO', image: 'images/avatar-placeholder.JPG' },
+    { name: 'Dr. Muhammad Zeeshan', role: 'President, Akhuwat NGO', image: 'images/avatar-placeholder.JPG' },
+    { name: 'Shabana Ahmadzai', role: 'Innovative Service Director', image: 'images/avatar-placeholder.JPG' },
+    { name: 'Ilkhom Khalimzoda', role: 'Postdoctoral Researcher, University of Jyväskylä', image: 'images/avatar-placeholder.JPG' },
   ],
   'iftar-zakat-discussion': [
-    { name: 'Sheikh Mujeeb Callagher', role: 'Speaker', image: 'images/avatar-placeholder.jpg' },
+    { name: 'Sheikh Mujeeb Callagher', role: 'Speaker', image: 'images/avatar-placeholder.JPG' },
   ],
   'personal-branding': [
-    { name: 'Aicha Manai', role: 'CEO, Startup Refugees', image: 'images/avatar-placeholder.jpg' },
-    { name: 'Amin Hassan', role: 'Worklife Influencer of the Year 2023', image: 'images/avatar-placeholder.jpg' },
+    { name: 'Aicha Manai', role: 'CEO, Startup Refugees', image: 'images/avatar-placeholder.JPG' },
+    { name: 'Amin Hassan', role: 'Worklife Influencer of the Year 2023', image: 'images/avatar-placeholder.JPG' },
   ],
   'muslim-professionals-network': [
-    { name: 'Idil Hussein', role: 'Researcher, Finnish Institute for Health and Welfare (THL)', image: 'images/avatar-placeholder.jpg' },
-    { name: 'Hunderra Assefa', role: 'Co-founder, HHA International FZCO', image: 'images/avatar-placeholder.jpg' },
+    { name: 'Idil Hussein', role: 'Researcher, Finnish Institute for Health and Welfare (THL)', image: 'images/avatar-placeholder.JPG' },
+    { name: 'Hunderra Assefa', role: 'Co-founder, HHA International FZCO', image: 'images/avatar-placeholder.JPG' },
   ],
   'picnic-for-palestine': [
-    { name: 'Mohammad Khlouf', role: 'BDS Movement', image: 'images/avatar-placeholder.jpg' },
-    { name: 'Kazyna Turdibayeva', role: 'Marketing Specialist', image: 'images/avatar-placeholder.jpg' },
+    { name: 'Mohammad Khlouf', role: 'BDS Movement', image: 'images/avatar-placeholder.JPG' },
+    { name: 'Kazyna Turdibayeva', role: 'Marketing Specialist', image: 'images/avatar-placeholder.JPG' },
   ],
 };
 
@@ -606,7 +606,7 @@ function renderEventSpeakers() {
     list.forEach(s => {
       const item = document.createElement('div');
       item.className = 'story-speaker';
-      const imgSrc = s.image || 'images/avatar-placeholder.jpg';
+      const imgSrc = s.image || 'images/avatar-placeholder.JPG';
       const alt = s.alt || `${s.name}${s.role ? ', ' + s.role : ''}`;
       item.innerHTML = `
         <img class="story-speaker__img" src="${imgSrc}" alt="${alt}" loading="lazy" />
