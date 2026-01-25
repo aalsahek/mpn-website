@@ -9,12 +9,12 @@ function trackEvent(event, detail = {}) {
 
 // Data sources (placeholders)
 const events = [
-  { id: 'e1', name: 'MPN & Karamah initiative', date: '2026-02-07 • Helsinki', image: 'https://picsum.photos/seed/tech/1200/700', url: '#', featured: true, isoDate: '2026-02-07' },
-  { id: 'e2', name: 'Islamic Psychology', date: '03.08.2025 • Helsinki', image: 'images/islamic-psychology-bg.JPG', url: '#', isoDate: '2025-08-03' },
-  { id: 'e3', name: 'Your Mind Matters', date: '2025-07-19 • Vantaa', image: 'images/mental-health-bg.JPG', url: '#', isoDate: '2025-07-19' },
-  { id: 'e4', name: 'Startups & Founders', date: '29.05.2025 • Espoo', image: 'images/startups-and-founders.JPG', url: '#', isoDate: '2025-05-29' },
-  { id: 'e5', name: 'Mid-Ramadan Reflections', date: '2025-03-12 • Helsinki', image: 'images/Mid-Ramadan Reflections.JPG', url: '#', isoDate: '2025-03-12' },
-  { id: 'e6', name: 'Deconstructing AI', date: '2025-02-23 • Helsinki', image: 'images/Deconstructing AI.JPG', url: '#', isoDate: '2025-02-23' }
+  { id: 'e1', name: 'Last Chapter before Hereafter', date: '2026-02-07 • Helsinki', image: 'https://picsum.photos/seed/tech/1200/700', url: 'https://fienta.com/the-last-chapter-before-hereafter-things-to-know-when-losing-a-loved-one', featured: true, isoDate: '2026-02-07' },
+  { id: 'e2', name: 'Islamic Psychology', date: '03.08.2025 • Helsinki', image: 'images/islamic-psychology-bg.JPG', url: 'events.html', isoDate: '2025-08-03' },
+  { id: 'e3', name: 'Your Mind Matters', date: '2025-07-19 • Vantaa', image: 'images/mental-health-bg.JPG', url: 'events.html', isoDate: '2025-07-19' },
+  { id: 'e4', name: 'Startups & Founders', date: '29.05.2025 • Espoo', image: 'images/startups-and-founders.JPG', url: 'events.html', isoDate: '2025-05-29' },
+  { id: 'e5', name: 'Mid-Ramadan Reflections', date: '2025-03-12 • Helsinki', image: 'images/Mid-Ramadan Reflections.JPG', url: 'events.html', isoDate: '2025-03-12' },
+  { id: 'e6', name: 'Deconstructing AI', date: '2025-02-23 • Helsinki', image: 'images/Deconstructing AI.JPG', url: 'events.html', isoDate: '2025-02-23' }
 ];
 
 const impactStats = {
@@ -31,6 +31,11 @@ const speakers = [
 
 // Event-specific speakers (used on events.html)
 const eventSpeakers = {
+  'the-last-chapter-before-hereafter': [
+    { name: 'Maija Butters', role: '', image: 'images/avatar-placeholder.JPG' },
+    { name: 'Pia Jardi', role: '', image: 'images/avatar-placeholder.JPG' },
+    { name: 'Sh. Abdulaziiz Heinonen', role: '', image: 'images/avatar-placeholder.JPG' },
+  ],
   'islamic-psychology': [
     { name: 'Dr. Rothman', role: 'Head of Islamic Psychology, Cambridge Muslim College', image: 'images/avatar-placeholder.JPG' },
   ],
@@ -322,7 +327,7 @@ function renderEvents() {
         evt.preventDefault();
         return;
       }
-      if (e.url) window.open(e.url, '_blank', 'noopener');
+      if (e.url) window.location.href = e.url;
     });
 
     // Button: allow navigation; on mobile require card to be active first
@@ -337,7 +342,7 @@ function renderEvents() {
           return;
         }
         trackEvent('event_card_click', { id: e.id, name: e.name, action: 'details' });
-        if (e.url) window.open(e.url, '_blank', 'noopener');
+        if (e.url) window.location.href = e.url;
       });
     }
     track.appendChild(article);

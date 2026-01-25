@@ -670,6 +670,20 @@ section { padding: 64px 0; }
 .story-speaker__name { font-weight: 800; color: var(--navy); font-size: 16px; line-height: 1.25; width: 100%; }
 .story-speaker__role { color: #42577e; font-size: 14px; width: 100%; }
 .event__intro .section__sub { max-width: 620px; }
+.event__tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--gold);
+  color: #0a1630;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-weight: 800;
+  font-size: 12px;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
 
 /* Scoped gallery styles */
 .gallery_wrapper {
