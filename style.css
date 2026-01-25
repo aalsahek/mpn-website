@@ -709,10 +709,11 @@ section { padding: 64px 0; }
   );
   transition: filter 500ms, clip-path 500ms;
 }
-/* Remove previous left-gallery overrides if any existed earlier */
-/* For events where gallery appears first (left), give it the wider column */
-@media (min-width: 900px) { .event:nth-of-type(even) .event__grid { grid-template-columns: 1.25fr 1fr; } }
-.event.event--fixed .event__grid { grid-template-columns: 1fr 1.25fr !important; }
+/* Explicit layout helpers for events */
+@media (min-width: 900px) {
+  .event--wide-left .event__grid { grid-template-columns: 1.25fr 1fr; }
+  .event.event--fixed .event__grid { grid-template-columns: 1fr 1.25fr !important; }
+}
 .gallery_wrapper img:nth-of-type(4),
 .gallery_wrapper img:nth-of-type(9) { grid-column: 2 / span 2; }
 .gallery_wrapper img:hover {
