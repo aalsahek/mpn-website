@@ -9,7 +9,7 @@ function trackEvent(event, detail = {}) {
 
 // Data sources (placeholders)
 const events = [
-  { id: 'e1', name: 'Last Chapter before Hereafter', date: '2026-02-07 • Helsinki', image: 'https://picsum.photos/seed/tech/1200/700', url: 'https://fienta.com/the-last-chapter-before-hereafter-things-to-know-when-losing-a-loved-one', featured: true, isoDate: '2026-02-07' },
+  { id: 'e1', name: 'Annual Iftar 2026', date: '07.03.2026 • Helsinki', image: 'images/iftar.JPG', url: 'https://fienta.com/fi/annual-iftar-2026', featured: true, isoDate: '2026-03-07' },
   { id: 'e2', name: 'Islamic Psychology', date: '03.08.2025 • Helsinki', image: 'images/islamic-psychology-bg.JPG', url: 'events.html', isoDate: '2025-08-03' },
   { id: 'e3', name: 'Your Mind Matters', date: '2025-07-19 • Vantaa', image: 'images/mental-health-bg.JPG', url: 'events.html', isoDate: '2025-07-19' },
   { id: 'e4', name: 'Startups & Founders', date: '29.05.2025 • Espoo', image: 'images/startups-and-founders.JPG', url: 'events.html', isoDate: '2025-05-29' },
@@ -18,9 +18,9 @@ const events = [
 ];
 
 const impactStats = {
-  events: 14,
-  speakers: 26,
-  participants: 550,
+  events: 16,
+  speakers: 30,
+  participants: 649,
 };
 
 const speakers = [
@@ -261,14 +261,12 @@ function renderPrinciples(lang='en') {
   });
 }
 
-// Render Featured Event and Carousel (Custom slider)
-function renderEvents() {
-  const featuredEl = $('#featured-event');
-  const hasFeatured = !!featuredEl;
+let upcomingRefreshTimer;
 
+function computeUpcomingFlags() {
   const today = new Date();
   today.setHours(0, 0, 0, 0);
-  events.forEach(ev => {
+  events.forEach((ev) => {
     if (!ev.isoDate) {
       ev.isUpcoming = false;
       return;
@@ -276,6 +274,14 @@ function renderEvents() {
     const evDate = new Date(ev.isoDate);
     ev.isUpcoming = !Number.isNaN(evDate.valueOf()) && evDate >= today;
   });
+}
+
+// Render Featured Event and Carousel (Custom slider)
+function renderEvents() {
+  const featuredEl = $('#featured-event');
+  const hasFeatured = !!featuredEl;
+
+  computeUpcomingFlags();
 
   if (hasFeatured) {
     const featured = events.find(e => e.featured) || events[0];
@@ -304,6 +310,7 @@ function renderEvents() {
   list.forEach((e, i) => {
     const article = document.createElement('article');
     article.className = 'event-card';
+    article.dataset.eventId = e.id;
     article.setAttribute('role', 'listitem');
     if (i === 0) article.setAttribute('active', '');
     article.innerHTML = `
@@ -406,6 +413,42 @@ function renderEvents() {
 
   toggleUI(0);
   center(0);
+}
+
+function refreshUpcomingBadges() {
+  computeUpcomingFlags();
+  const cards = document.querySelectorAll('.event-card');
+  if (!cards.length) return;
+  cards.forEach((card) => {
+    const id = card.getAttribute('data-event-id');
+    const eventData = events.find((ev) => ev.id === id);
+    if (!eventData) return;
+    const content = card.querySelector('.event-card__content');
+    if (!content) return;
+    const badge = content.querySelector('.event-card__tag');
+    if (eventData.isUpcoming) {
+      if (!badge) {
+        const tag = document.createElement('span');
+        tag.className = 'event-card__tag';
+        tag.textContent = 'Upcoming';
+        content.insertAdjacentElement('afterbegin', tag);
+      }
+    } else if (badge) {
+      badge.remove();
+    }
+  });
+}
+
+function scheduleUpcomingRefresh() {
+  if (upcomingRefreshTimer) clearTimeout(upcomingRefreshTimer);
+  const now = new Date();
+  const nextMidnight = new Date(now);
+  nextMidnight.setHours(24, 0, 0, 0);
+  const delay = Math.max(nextMidnight.getTime() - now.getTime(), 60 * 1000);
+  upcomingRefreshTimer = setTimeout(() => {
+    refreshUpcomingBadges();
+    scheduleUpcomingRefresh();
+  }, delay);
 }
 
 // legacy carousel helpers removed
@@ -968,6 +1011,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initTeamScroll();
   applyImpactStats();
   initStatisticsCounters();
+  refreshUpcomingBadges();
+  scheduleUpcomingRefresh();
 
   // Language toggle
         // Language toggle hidden for now; re-enable this block when Finnish is live again.
