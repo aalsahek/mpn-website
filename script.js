@@ -263,17 +263,28 @@ function renderPrinciples(lang='en') {
 
 let upcomingRefreshTimer;
 
+function applyUpcomingFlag(ev, today = null) {
+  const now = today ? new Date(today) : new Date();
+  now.setHours(0, 0, 0, 0);
+  if (!ev || !ev.isoDate) {
+    ev.isUpcoming = false;
+    return ev.isUpcoming;
+  }
+  const evDate = new Date(ev.isoDate);
+  ev.isUpcoming = !Number.isNaN(evDate.valueOf()) && evDate >= now;
+  return ev.isUpcoming;
+}
+
+function registerEvent(eventData) {
+  applyUpcomingFlag(eventData);
+  events.push(eventData);
+  refreshUpcomingBadges();
+}
+
 function computeUpcomingFlags() {
   const today = new Date();
   today.setHours(0, 0, 0, 0);
-  events.forEach((ev) => {
-    if (!ev.isoDate) {
-      ev.isUpcoming = false;
-      return;
-    }
-    const evDate = new Date(ev.isoDate);
-    ev.isUpcoming = !Number.isNaN(evDate.valueOf()) && evDate >= today;
-  });
+  events.forEach((ev) => applyUpcomingFlag(ev, today));
 }
 
 // Render Featured Event and Carousel (Custom slider)
