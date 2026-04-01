@@ -1790,8 +1790,78 @@ section.event[hidden] {
   min-width: 200px;
 }
 
+.privacy-doc {
+  padding: clamp(48px, 7vw, 96px) 0;
+  background: #f7f9fc;
+}
+
+.privacy-doc__content {
+  display: grid;
+  gap: clamp(24px, 4vw, 32px);
+}
+
+.privacy-doc__header {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.privacy-doc__header .section__sub {
+  margin: 8px 0 0;
+}
+
+.privacy-doc__body {
+  background: #fff;
+  border-radius: 28px;
+  padding: clamp(24px, 4vw, 40px);
+  box-shadow: -22px 22px 40px rgba(15, 35, 75, 0.12);
+  display: grid;
+  gap: clamp(24px, 3vw, 32px);
+}
+
+.privacy-block {
+  display: grid;
+  gap: 10px;
+}
+
+.privacy-block + .privacy-block {
+  padding-top: clamp(18px, 2vw, 24px);
+}
+
+.privacy-block__title {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #0f2f58;
+}
+
+.privacy-doc__body .body-text {
+  margin: 0;
+  color: rgba(13, 34, 58, 0.82);
+}
+
+.privacy-doc__body a {
+  color: #143474;
+}
+
+.privacy-list {
+  margin: 0;
+  padding-left: 1.2rem;
+  display: grid;
+  gap: 10px;
+}
+
+.privacy-list li::marker {
+  color: #1c698c;
+}
+
 @media (max-width: 720px) {
   .hero-shape { display: none !important; }
+
+  .privacy-doc__header {
+    align-items: stretch;
+    flex-direction: column;
+  }
 }
 .team .contact-card-container.blog-card::after {
   left: calc(50% + clamp(20px, 3vw, 28px) - 10px);
