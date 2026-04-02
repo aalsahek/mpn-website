@@ -1844,6 +1844,28 @@ section.event[hidden] {
   color: #143474;
 }
 
+.members-form {
+  padding: clamp(12px, 2vw, 16px);
+}
+
+.members-form iframe {
+  display: block;
+  width: 100%;
+  min-height: 612px;
+  border: 0;
+  border-radius: 18px;
+}
+
+.members-copy {
+  display: grid;
+  gap: 10px;
+  margin-bottom: clamp(24px, 4vw, 32px);
+}
+
+.members-copy .section__sub {
+  margin: 0;
+}
+
 .privacy-list {
   margin: 0;
   padding-left: 1.2rem;
