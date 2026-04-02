@@ -16,6 +16,11 @@
   --shadow-sm: 0 6px 18px rgba(0, 0, 0, 0.08);
   --shadow-md: 0 10px 30px rgba(15, 35, 75, 0.18);
   --focus: 0 0 0 3px rgba(172, 204, 228, 0.8), 0 0 0 5px rgba(36, 60, 100, 0.45);
+  --shiny-cta-bg: #08162c;
+  --shiny-cta-bg-subtle: #12325e;
+  --shiny-cta-fg: #ffffff;
+  --shiny-cta-highlight: #8ed8ff;
+  --shiny-cta-highlight-subtle: #d7f5ff;
   /* Shared blob clip paths (percentage-based, scales with box) */
   --blob-clip: path(
     "M 40% 10% C 50% 0% 50% 0% 60% 10% C 70% 20% 80% 30% 90% 40% C 100% 50% 100% 50% 90% 60% C 80% 70% 70% 80% 60% 90% C 50% 100% 50% 100% 40% 90% C 30% 80% 20% 70% 10% 60% C 0% 50% 0% 50% 10% 40% Z"
@@ -27,6 +32,30 @@
   --speaker-blob: path(
     "M 40% 10% C 50% 0% 50% 0% 60% 10% C 70% 20% 80% 30% 90% 40% C 100% 50% 100% 50% 90% 60% C 80% 70% 70% 80% 60% 90% C 50% 100% 50% 100% 40% 90% C 30% 80% 20% 70% 10% 60% C 0% 50% 0% 50% 10% 40% Z"
   );
+}
+
+@property --gradient-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@property --gradient-angle-offset {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@property --gradient-percent {
+  syntax: "<percentage>";
+  initial-value: 8%;
+  inherits: false;
+}
+
+@property --gradient-shine {
+  syntax: "<color>";
+  initial-value: white;
+  inherits: false;
 }
 
 * { box-sizing: border-box; }
@@ -114,6 +143,125 @@ html, body, .hero { overflow-anchor: none; }
 .header__nav a:hover::after,
 .header__nav a.-active::after { transform: scaleY(1); }
 .header__right { display: flex; align-items: center; gap: 10px; }
+.shiny-cta {
+  --animation: gradient-angle linear infinite;
+  --duration: 3s;
+  --shadow-size: 2px;
+  --transition: 800ms cubic-bezier(0.25, 1, 0.5, 1);
+  isolation: isolate;
+  position: relative;
+  left: -10px;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.78rem 1.31rem;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: linear-gradient(var(--shiny-cta-bg), var(--shiny-cta-bg)) padding-box,
+    conic-gradient(
+      from calc(var(--gradient-angle) - var(--gradient-angle-offset)),
+      transparent,
+      var(--shiny-cta-highlight) var(--gradient-percent),
+      var(--gradient-shine) calc(var(--gradient-percent) * 2),
+      var(--shiny-cta-highlight) calc(var(--gradient-percent) * 3),
+      transparent calc(var(--gradient-percent) * 4)
+    ) border-box;
+  box-shadow: inset 0 0 0 1px var(--shiny-cta-bg-subtle);
+  color: var(--shiny-cta-fg) !important;
+  text-decoration: none;
+  white-space: nowrap;
+  outline-offset: 4px;
+  transition: var(--transition);
+  transition-property: --gradient-angle-offset, --gradient-percent, --gradient-shine;
+}
+
+.shiny-cta,
+.shiny-cta::before,
+.shiny-cta::after {
+  animation: var(--animation) var(--duration), var(--animation) calc(var(--duration) / 0.4) reverse paused;
+  animation-composition: add;
+}
+
+.shiny-cta::before,
+.shiny-cta::after,
+.shiny-cta span::before {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset-inline-start: 50%;
+  inset-block-start: 50%;
+  translate: -50% -50%;
+  z-index: -1;
+}
+
+.shiny-cta::before {
+  --size: calc(100% - var(--shadow-size) * 3);
+  --position: 2px;
+  --space: calc(var(--position) * 2);
+  width: var(--size);
+  height: var(--size);
+  background: radial-gradient(circle at var(--position) var(--position), white calc(var(--position) / 4), transparent 0) padding-box;
+  background-size: var(--space) var(--space);
+  background-repeat: space;
+  mask-image: conic-gradient(from calc(var(--gradient-angle) + 45deg), black, transparent 10% 90%, black);
+  border-radius: inherit;
+  opacity: 0.4;
+}
+
+.shiny-cta::after {
+  --animation: shimmer linear infinite;
+  width: 100%;
+  aspect-ratio: 1;
+  background: linear-gradient(-50deg, transparent, var(--shiny-cta-highlight), transparent);
+  mask-image: radial-gradient(circle at bottom, transparent 40%, black);
+  opacity: 0.6;
+}
+
+.shiny-cta span {
+  position: relative;
+  z-index: 1;
+  font-size: 1.04rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  line-height: 1;
+}
+
+.shiny-cta span::before {
+  --size: calc(100% + 1rem);
+  width: var(--size);
+  height: var(--size);
+  box-shadow: inset 0 -1ex 2rem 4px rgba(142, 216, 255, 0.45);
+  opacity: 0;
+  transition: opacity var(--transition);
+  animation: calc(var(--duration) * 1.5) breathe linear infinite;
+}
+
+.shiny-cta:hover,
+.shiny-cta:focus-visible {
+  --gradient-percent: 8%;
+  --gradient-angle-offset: 0deg;
+  --gradient-shine: white;
+}
+
+.shiny-cta:hover,
+.shiny-cta:hover::before,
+.shiny-cta:hover::after,
+.shiny-cta:focus-visible,
+.shiny-cta:focus-visible::before,
+.shiny-cta:focus-visible::after {
+  animation-play-state: running;
+}
+
+.shiny-cta:hover span::before,
+.shiny-cta:focus-visible span::before {
+  opacity: 0;
+}
+
+.shiny-cta:active {
+  translate: 0 1px;
+}
+
 .lang-toggle-wrap { display: none !important; }
 .b-lang { display: none !important; }
 .lang-label { display:none; }
@@ -181,6 +329,19 @@ html, body, .hero { overflow-anchor: none; }
 .btn--primary:focus-visible::before { animation: hero-pulse 2s infinite; }
 .btn--primary:focus-visible { box-shadow: 0 0 0 3px rgba(172, 204, 228, 0.85), 0 0 0 6px rgba(36, 60, 100, 0.45); }
 
+@keyframes gradient-angle {
+  to { --gradient-angle: 360deg; }
+}
+
+@keyframes shimmer {
+  to { rotate: 360deg; }
+}
+
+@keyframes breathe {
+  from, to { scale: 1; }
+  50% { scale: 1.2; }
+}
+
 .btn--outline { background: #fff; color: var(--navy); border: 1px solid var(--neutral-gray); }
 
 /* Burger navigation */
@@ -208,6 +369,7 @@ body.open::after {
   body.open { overflow: hidden; }
 
   .header__nav { display: none; }
+  .shiny-cta { display: none; }
 
   .b-container {
     position: fixed;
