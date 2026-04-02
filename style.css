@@ -370,6 +370,13 @@ body.open::after {
 
   .header__nav { display: none; }
   .shiny-cta { display: none; }
+  .b-nav .shiny-cta--mobile {
+    display: inline-flex;
+    left: 0;
+    margin-top: 10px;
+    width: 100%;
+    justify-content: center;
+  }
 
   .b-container {
     position: fixed;
