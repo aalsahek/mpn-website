@@ -36,7 +36,13 @@
           <a href="about.html" data-track="nav_click" data-nav="About Us">About Us</a>
           <a href="events.html" data-track="nav_click" data-nav="Events">Events</a>
           <a href="our-impact.html" data-track="nav_click" data-nav="Our Impact">Our Impact</a>
-          <a href="supporters.html" data-track="nav_click" data-nav="Supporters">Supporters</a>
+          <div class="nav-dropdown">
+            <button class="nav-dropdown__toggle" type="button" aria-expanded="false">Supporters</button>
+            <div class="nav-dropdown__menu" aria-label="Supporters submenu">
+              <a href="supporters.html" data-track="nav_click" data-nav="Sponsors & Partners">Sponsors & Partners</a>
+              <a href="wall-of-donors.html" data-track="nav_click" data-nav="Wall of Donors">Wall of Donors</a>
+            </div>
+          </div>
           <a href="contact.html" data-track="nav_click" data-nav="Contact">Contact</a>
         </nav>
         <div class="header__right">
@@ -65,7 +71,13 @@
           <li><a class="b-link" href="about.html" data-track="nav_click" data-nav="About Us">About Us</a></li>
           <li><a class="b-link" href="events.html" data-track="nav_click" data-nav="Events">Events</a></li>
           <li><a class="b-link" href="our-impact.html" data-track="nav_click" data-nav="Our Impact">Our Impact</a></li>
-          <li><a class="b-link" href="supporters.html" data-track="nav_click" data-nav="Supporters">Supporters</a></li>
+          <li class="b-subnav">
+            <button class="b-subnav__toggle" type="button" aria-expanded="false">Supporters</button>
+            <ul class="b-subnav__menu">
+              <li><a class="b-link" href="supporters.html" data-track="nav_click" data-nav="Sponsors & Partners">Sponsors & Partners</a></li>
+              <li><a class="b-link" href="wall-of-donors.html" data-track="nav_click" data-nav="Wall of Donors">Wall of Donors</a></li>
+            </ul>
+          </li>
           <li><a class="b-link" href="contact.html" data-track="nav_click" data-nav="Contact">Contact</a></li>
           <li><a class="shiny-cta shiny-cta--mobile" href="members.html" data-track="nav_click" data-nav="Join MPN"><span>JOIN MPN</span></a></li>
         </ul>
