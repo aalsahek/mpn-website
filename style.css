@@ -2176,6 +2176,7 @@ section.event[hidden] {
 
 .donors-page .text-fade-word {
   display: inline-block;
+  color: inherit;
   opacity: 0;
   filter: blur(4px);
   animation: donor-title-fade-in 0.8s calc(var(--fade-delay, 0s) + (var(--word-index, 0) * 0.1s)) forwards cubic-bezier(0.11, 0, 0.5, 0);
@@ -2183,6 +2184,7 @@ section.event[hidden] {
 
 .donors-page .text-fade-line {
   display: inline-block;
+  color: inherit;
   opacity: 0;
   filter: blur(4px);
   transform: scale(0.94);
