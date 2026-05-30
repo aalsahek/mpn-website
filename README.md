@@ -36,7 +36,8 @@ Top-level (indicative):
 ├── events.html         # Events listing and galleries
 ├── our-impact.html     # Impact metrics and stories
 ├── contact.html        # Contact options and forms
-├── blogs.html          # (Present but currently hidden from nav)
+├── blogs.html          # Insights
+├── mentorship-circles.html # Full article page
 ├── style.css           # Global styles
 ├── script.js           # Shared behaviors, translations, filters
 ├── sitemap.xml         # Sitemap for search engines
@@ -78,9 +79,13 @@ Top-level (indicative):
 - **Key sections:** Hero, contact options/buttons linking to Google Forms (Volunteer, Speaker, Sponsorship, Partnership), plus a disabled Membership glassmorphism button (“MEMBERSHIP / Opening Soon”).
 - **Dynamic elements:** None beyond static links.
 
-### Blogs (`blogs.html`)
-- **Purpose:** Placeholder blog page; currently hidden from nav/SEO (noindex).  
-- **Content:** Static; not linked in primary nav.
+### Insights (`blogs.html`)
+- **Purpose:** Community articles, reflections, and practical guides.
+- **Content:** Static; linked from the Community dropdown in the primary nav.
+
+### Mentorship Circles (`mentorship-circles.html`)
+- **Purpose:** Full article page for the Mentorship Circles insight.
+- **Content:** Static long-form article linked from the Insights grid.
 
 ---
 

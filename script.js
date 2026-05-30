@@ -916,41 +916,30 @@ function initBurgerMenu() {
   applyLangPlacement();
 }
 
-function initSupportersNav() {
+function initDropdownNav() {
   const desktopDropdowns = Array.from(document.querySelectorAll('.nav-dropdown'));
   const mobileSubnavs = Array.from(document.querySelectorAll('.b-subnav'));
   const desktopMediaQuery = window.matchMedia('(min-width: 901px)');
 
+  const setDesktopDropdownOpen = (dropdown, open) => {
+    const toggle = dropdown.querySelector('.nav-dropdown__toggle');
+    if (!toggle) return;
+    const shouldOpen = desktopMediaQuery.matches && open;
+    dropdown.classList.toggle('is-open', shouldOpen);
+    toggle.setAttribute('aria-expanded', String(shouldOpen));
+  };
+
   desktopDropdowns.forEach((dropdown) => {
     const toggle = dropdown.querySelector('.nav-dropdown__toggle');
     if (!toggle) return;
-    const isPinnedOpen = dropdown.classList.contains('is-open');
-
-    const setOpen = (open) => {
-      if (!desktopMediaQuery.matches) {
-        dropdown.classList.remove('is-open');
-        toggle.setAttribute('aria-expanded', 'false');
-        return;
-      }
-      dropdown.classList.toggle('is-open', open);
-      toggle.setAttribute('aria-expanded', String(open));
-    };
-
-    setOpen(isPinnedOpen);
+    setDesktopDropdownOpen(dropdown, dropdown.classList.contains('is-open'));
 
     toggle.addEventListener('click', (event) => {
       event.preventDefault();
       const shouldOpen = !dropdown.classList.contains('is-open');
-
       desktopDropdowns.forEach((item) => {
-        const itemToggle = item.querySelector('.nav-dropdown__toggle');
-        const itemPinned = item.classList.contains('is-open') && item !== dropdown;
-        if (!itemToggle) return;
-        item.classList.toggle('is-open', itemPinned);
-        itemToggle.setAttribute('aria-expanded', String(itemPinned));
+        setDesktopDropdownOpen(item, item === dropdown && shouldOpen);
       });
-
-      setOpen(shouldOpen || isPinnedOpen);
     });
   });
 
@@ -958,26 +947,24 @@ function initSupportersNav() {
     if (!desktopMediaQuery.matches) return;
     desktopDropdowns.forEach((dropdown) => {
       if (dropdown.contains(event.target)) return;
-      const toggle = dropdown.querySelector('.nav-dropdown__toggle');
-      const isPinnedOpen = dropdown.querySelector('.nav-dropdown__toggle.-active') !== null;
-      dropdown.classList.toggle('is-open', isPinnedOpen);
-      if (toggle) toggle.setAttribute('aria-expanded', String(isPinnedOpen));
+      setDesktopDropdownOpen(dropdown, false);
     });
   });
 
   document.addEventListener('keydown', (event) => {
     if (event.key !== 'Escape') return;
     desktopDropdowns.forEach((dropdown) => {
-      const toggle = dropdown.querySelector('.nav-dropdown__toggle');
-      const isPinnedOpen = toggle ? toggle.classList.contains('-active') : false;
-      dropdown.classList.toggle('is-open', isPinnedOpen);
-      if (toggle) toggle.setAttribute('aria-expanded', String(isPinnedOpen));
+      setDesktopDropdownOpen(dropdown, false);
     });
   });
 
   mobileSubnavs.forEach((subnav) => {
     const toggle = subnav.querySelector('.b-subnav__toggle');
     if (!toggle) return;
+    const shouldStartOpen = toggle.classList.contains('b-link--active') || subnav.classList.contains('is-open');
+    subnav.classList.toggle('is-open', shouldStartOpen);
+    toggle.setAttribute('aria-expanded', String(shouldStartOpen));
+
     toggle.addEventListener('click', () => {
       const shouldOpen = !subnav.classList.contains('is-open');
       subnav.classList.toggle('is-open', shouldOpen);
@@ -1100,7 +1087,7 @@ document.addEventListener('DOMContentLoaded', () => {
   renderEventSpeakers();
   initEventGalleryFilters();
   initBurgerMenu();
-  initSupportersNav();
+  initDropdownNav();
   initFloatingSocial();
   // ticker removed
   lazyLoadBackgrounds();

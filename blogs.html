@@ -4,23 +4,22 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Blogs — Muslim Professionals Network (MPN) Finland</title>
+    <title>Insights — Muslim Professionals Network (MPN) Finland</title>
     <meta name="description" content="Stories, reflections, and practical lessons from the Muslim Professionals Network community in Finland." />
-    <meta name="robots" content="noindex, nofollow" />
     <meta name="theme-color" content="#243c64" />
-    <link rel="canonical" href="https://mpnsuomi.fi/" />
+    <link rel="canonical" href="https://mpnsuomi.fi/blogs.html" />
     <link rel="icon" href="images/placeholder-white.png" type="image/png" />
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="MPN Finland" />
-    <meta property="og:title" content="Blogs — Muslim Professionals Network (MPN) Finland" />
+    <meta property="og:title" content="Insights — Muslim Professionals Network (MPN) Finland" />
     <meta property="og:description" content="Stories, reflections, and practical lessons from the Muslim Professionals Network community in Finland." />
-    <meta property="og:url" content="https://mpnsuomi.fi/" />
+    <meta property="og:url" content="https://mpnsuomi.fi/blogs.html" />
     <meta property="og:image" content="https://mpnsuomi.fi/images/w13.JPG" />
     <meta property="og:image:alt" content="MPN community gathering" />
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Blogs — Muslim Professionals Network (MPN) Finland" />
+    <meta name="twitter:title" content="Insights — Muslim Professionals Network (MPN) Finland" />
     <meta name="twitter:description" content="Stories, reflections, and practical lessons from the Muslim Professionals Network community in Finland." />
     <meta name="twitter:image" content="https://mpnsuomi.fi/images/w13.JPG" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -36,8 +35,14 @@
         <nav class="header__nav" aria-label="Primary">
           <a href="index.html#home" data-track="nav_click" data-nav="Home">Home</a>
           <a href="about.html" data-track="nav_click" data-nav="About Us">About Us</a>
-          <a href="events.html" data-track="nav_click" data-nav="Events">Events</a>
-          <a href="our-impact.html" data-track="nav_click" data-nav="Our Impact">Our Impact</a>
+          <div class="nav-dropdown">
+            <button class="nav-dropdown__toggle -active" type="button" aria-expanded="false">Community</button>
+            <div class="nav-dropdown__menu" aria-label="Community submenu">
+              <a href="events.html" data-track="nav_click" data-nav="Events">Events</a>
+              <a href="blogs.html" data-track="nav_click" data-nav="Insights" class="-active">Insights</a>
+              <a href="our-impact.html" data-track="nav_click" data-nav="Our Impact">Our Impact</a>
+            </div>
+          </div>
           <div class="nav-dropdown">
             <button class="nav-dropdown__toggle" type="button" aria-expanded="false">Supporters</button>
             <div class="nav-dropdown__menu" aria-label="Supporters submenu">
@@ -73,8 +78,14 @@
         <ul>
           <li><a class="b-link" href="index.html#home" data-track="nav_click" data-nav="Home">Home</a></li>
           <li><a class="b-link" href="about.html" data-track="nav_click" data-nav="About Us">About Us</a></li>
-          <li><a class="b-link" href="events.html" data-track="nav_click" data-nav="Events">Events</a></li>
-          <li><a class="b-link" href="our-impact.html" data-track="nav_click" data-nav="Our Impact">Our Impact</a></li>
+          <li class="b-subnav">
+            <button class="b-subnav__toggle b-link--active" type="button" aria-expanded="false">Community</button>
+            <ul class="b-subnav__menu">
+              <li><a class="b-link" href="events.html" data-track="nav_click" data-nav="Events">Events</a></li>
+              <li><a class="b-link b-link--active" href="blogs.html" data-track="nav_click" data-nav="Insights">Insights</a></li>
+              <li><a class="b-link" href="our-impact.html" data-track="nav_click" data-nav="Our Impact">Our Impact</a></li>
+            </ul>
+          </li>
           <li class="b-subnav">
             <button class="b-subnav__toggle" type="button" aria-expanded="false">Supporters</button>
             <ul class="b-subnav__menu">
@@ -89,7 +100,7 @@
     </header>
 
     <main id="main" tabindex="-1">
-      <section class="hero hero--no-shape hero--blogs" aria-label="Blogs hero" style="min-height: 45dvh;">
+      <section class="hero hero--no-shape hero--blogs" aria-label="Insights hero" style="min-height: 45dvh;">
         <img src="images/w13.JPG" alt="" aria-hidden="true" class="hero-shape" />
         <div class="container hero__inner">
           <div class="hero__content">
@@ -103,7 +114,7 @@
           <h2 class="headline section__title">Latest insights</h2>
           <p class="body-text section__sub">Explore insights, highlights, and advice from the Muslim Professionals Network’s volunteers and partners throughout Finland. Our publications feature reflections on major events, interviews with inspiring leaders, and practical guides designed to help professionals succeed while giving back to their communities.</p>
           <div class="blog-grid">
-            <a class="blog-card" id="mentorship-circles" href="#mentorship-circles">
+            <a class="blog-card" id="mentorship-circles" href="mentorship-circles.html">
               <div class="blog-card__image"><img src="images/w13.JPG" alt="Community members networking during an MPN event" loading="lazy" /></div>
               <div class="blog-card__meta">
                 <span class="blog-card__tag">Community</span>
@@ -225,6 +236,7 @@
           <a href="index.html#home" data-track="nav_click" data-nav="Home">Home</a>
           <a href="about.html" data-track="nav_click" data-nav="About Us">About Us</a>
           <a href="events.html" data-track="nav_click" data-nav="Events">Events</a>
+          <a href="blogs.html" data-track="nav_click" data-nav="Insights" class="-active">Insights</a>
           <a href="our-impact.html" data-track="nav_click" data-nav="Our Impact">Our Impact</a>
           
           <a href="contact.html" data-track="nav_click" data-nav="Contact">Contact</a>

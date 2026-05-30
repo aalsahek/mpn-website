@@ -36,8 +36,14 @@
         <nav class="header__nav" aria-label="Primary">
           <a href="index.html#home" data-track="nav_click" data-nav="Home">Home</a>
           <a href="about.html" data-track="nav_click" data-nav="About Us">About Us</a>
-          <a href="events.html" data-track="nav_click" data-nav="Events" class="-active">Events</a>
-          <a href="our-impact.html" data-track="nav_click" data-nav="Our Impact">Our Impact</a>
+          <div class="nav-dropdown">
+            <button class="nav-dropdown__toggle -active" type="button" aria-expanded="false">Community</button>
+            <div class="nav-dropdown__menu" aria-label="Community submenu">
+              <a href="events.html" data-track="nav_click" data-nav="Events" class="-active">Events</a>
+              <a href="blogs.html" data-track="nav_click" data-nav="Insights">Insights</a>
+              <a href="our-impact.html" data-track="nav_click" data-nav="Our Impact">Our Impact</a>
+            </div>
+          </div>
           <div class="nav-dropdown">
             <button class="nav-dropdown__toggle" type="button" aria-expanded="false">Supporters</button>
             <div class="nav-dropdown__menu" aria-label="Supporters submenu">
@@ -73,8 +79,14 @@
         <ul>
           <li><a class="b-link" href="index.html#home" data-track="nav_click" data-nav="Home">Home</a></li>
           <li><a class="b-link" href="about.html" data-track="nav_click" data-nav="About Us">About Us</a></li>
-          <li><a class="b-link b-link--active" href="events.html" data-track="nav_click" data-nav="Events">Events</a></li>
-          <li><a class="b-link" href="our-impact.html" data-track="nav_click" data-nav="Our Impact">Our Impact</a></li>
+          <li class="b-subnav">
+            <button class="b-subnav__toggle b-link--active" type="button" aria-expanded="false">Community</button>
+            <ul class="b-subnav__menu">
+              <li><a class="b-link b-link--active" href="events.html" data-track="nav_click" data-nav="Events">Events</a></li>
+              <li><a class="b-link" href="blogs.html" data-track="nav_click" data-nav="Insights">Insights</a></li>
+              <li><a class="b-link" href="our-impact.html" data-track="nav_click" data-nav="Our Impact">Our Impact</a></li>
+            </ul>
+          </li>
           <li class="b-subnav">
             <button class="b-subnav__toggle" type="button" aria-expanded="false">Supporters</button>
             <ul class="b-subnav__menu">
@@ -332,6 +344,7 @@
           <a href="index.html#home" data-track="nav_click" data-nav="Home">Home</a>
           <a href="about.html" data-track="nav_click" data-nav="About Us">About Us</a>
           <a href="events.html" data-track="nav_click" data-nav="Events" class="-active">Events</a>
+          <a href="blogs.html" data-track="nav_click" data-nav="Insights">Insights</a>
           <a href="our-impact.html" data-track="nav_click" data-nav="Our Impact">Our Impact</a>
           
           <a href="contact.html" data-track="nav_click" data-nav="Contact">Contact</a>
