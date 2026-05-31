@@ -37,7 +37,7 @@ Top-level (indicative):
 ├── our-impact.html     # Impact metrics and stories
 ├── contact.html        # Contact options and forms
 ├── blogs.html          # Insights
-├── mentorship-circles.html # Full article page
+├── from-events-to-ecosystems.html # Full article page
 ├── style.css           # Global styles
 ├── script.js           # Shared behaviors, translations, filters
 ├── sitemap.xml         # Sitemap for search engines
@@ -83,8 +83,8 @@ Top-level (indicative):
 - **Purpose:** Community articles, reflections, and practical guides.
 - **Content:** Static; linked from the Community dropdown in the primary nav.
 
-### Mentorship Circles (`mentorship-circles.html`)
-- **Purpose:** Full article page for the Mentorship Circles insight.
+### From Events to Ecosystems (`from-events-to-ecosystems.html`)
+- **Purpose:** Full article page for the MPN ecosystem-building update.
 - **Content:** Static long-form article linked from the Insights grid.
 
 ---
