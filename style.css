@@ -2139,6 +2139,11 @@ section.event[hidden] {
   transition: color .2s ease, text-decoration-color .2s ease;
 }
 
+.article-content a:not(.btn):not(.article-resource-link):visited {
+  color: #143474;
+  text-decoration-color: rgba(172, 204, 228, 0.9);
+}
+
 .article-content a:not(.btn):not(.article-resource-link):hover,
 .article-content a:not(.btn):not(.article-resource-link):focus-visible {
   color: #0f476a;
@@ -2182,6 +2187,18 @@ section.event[hidden] {
   text-decoration: none;
   box-shadow: var(--shadow-sm);
   transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+
+.article-resource-link:visited {
+  color: #13294b;
+}
+
+.article-resource-link:visited span {
+  color: #0f2f58;
+}
+
+.article-resource-link:visited small {
+  color: rgba(13, 34, 58, 0.72);
 }
 
 .article-resource-link::after {
