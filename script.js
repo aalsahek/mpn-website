@@ -10,11 +10,11 @@ function trackEvent(event, detail = {}) {
 // Data sources (placeholders)
 const events = [
   { id: 'e1', name: 'Annual Iftar 2026', date: '07.03.2026 • Helsinki', image: 'images/iftar.JPG', url: 'https://fienta.com/fi/annual-iftar-2026', featured: true, isoDate: '2026-03-07' },
-  { id: 'e2', name: 'Islamic Psychology', date: '03.08.2025 • Helsinki', image: 'images/islamic-psychology-bg.JPG', url: 'events.html', isoDate: '2025-08-03' },
-  { id: 'e3', name: 'Your Mind Matters', date: '2025-07-19 • Vantaa', image: 'images/mental-health-bg.JPG', url: 'events.html', isoDate: '2025-07-19' },
-  { id: 'e4', name: 'Startups & Founders', date: '29.05.2025 • Espoo', image: 'images/startups-and-founders.JPG', url: 'events.html', isoDate: '2025-05-29' },
-  { id: 'e5', name: 'Mid-Ramadan Reflections', date: '2025-03-12 • Helsinki', image: 'images/Mid-Ramadan Reflections.JPG', url: 'events.html', isoDate: '2025-03-12' },
-  { id: 'e6', name: 'Deconstructing AI', date: '2025-02-23 • Helsinki', image: 'images/Deconstructing AI.JPG', url: 'events.html', isoDate: '2025-02-23' }
+  { id: 'e2', name: 'Islamic Psychology', date: '03.08.2025 • Helsinki', image: 'images/islamic-psychology-bg.JPG', url: '/events', isoDate: '2025-08-03' },
+  { id: 'e3', name: 'Your Mind Matters', date: '2025-07-19 • Vantaa', image: 'images/mental-health-bg.JPG', url: '/events', isoDate: '2025-07-19' },
+  { id: 'e4', name: 'Startups & Founders', date: '29.05.2025 • Espoo', image: 'images/startups-and-founders.JPG', url: '/events', isoDate: '2025-05-29' },
+  { id: 'e5', name: 'Mid-Ramadan Reflections', date: '2025-03-12 • Helsinki', image: 'images/Mid-Ramadan Reflections.JPG', url: '/events', isoDate: '2025-03-12' },
+  { id: 'e6', name: 'Deconstructing AI', date: '2025-02-23 • Helsinki', image: 'images/Deconstructing AI.JPG', url: '/events', isoDate: '2025-02-23' }
 ];
 
 const impactStats = {

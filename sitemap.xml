@@ -6,52 +6,52 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://mpnsuomi.fi/about.html</loc>
+    <loc>https://mpnsuomi.fi/about</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://mpnsuomi.fi/events.html</loc>
+    <loc>https://mpnsuomi.fi/events</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://mpnsuomi.fi/blogs.html</loc>
+    <loc>https://mpnsuomi.fi/blogs</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://mpnsuomi.fi/from-events-to-ecosystems.html</loc>
+    <loc>https://mpnsuomi.fi/from-events-to-ecosystems</loc>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mpnsuomi.fi/our-impact.html</loc>
+    <loc>https://mpnsuomi.fi/our-impact</loc>
     <changefreq>quarterly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://mpnsuomi.fi/contact.html</loc>
+    <loc>https://mpnsuomi.fi/contact</loc>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mpnsuomi.fi/supporters.html</loc>
+    <loc>https://mpnsuomi.fi/supporters</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mpnsuomi.fi/members.html</loc>
+    <loc>https://mpnsuomi.fi/members</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mpnsuomi.fi/wall-of-donors.html</loc>
+    <loc>https://mpnsuomi.fi/wall-of-donors</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://mpnsuomi.fi/privacy-policy.html</loc>
+    <loc>https://mpnsuomi.fi/privacy-policy</loc>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
   </url>
